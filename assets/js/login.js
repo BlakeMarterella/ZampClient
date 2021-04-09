@@ -70,3 +70,9 @@ function login(){
 function logout(){
   firebase.auth().signOut();
 }
+
+document.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    login()
+  }
+});
