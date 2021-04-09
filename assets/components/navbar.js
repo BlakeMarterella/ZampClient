@@ -24,13 +24,13 @@ class Navbar extends HTMLElement {
           <ul class="nav">
               <li>
                   <a href="dashboard.html">
-                      <i class="pe-7s-graph"></i>
+                      <i class="pe-7s-home"></i>
                       <p>Home</p>
                   </a>
               </li>
               <li>
               <a href="swag.html">
-                  <i class="pe-7s-map-marker"></i>
+                  <i class="pe-7s-plugin"></i>
                   <p>Swag Manager</p>
               </a>
               </li>
@@ -42,7 +42,7 @@ class Navbar extends HTMLElement {
               </li>
               <li>
               <a href="company.html">
-                  <i class="pe-7s-user"></i>
+                  <i class="pe-7s-config"></i>
                   <p>Company Profile</p>
               </a>
               </li>
