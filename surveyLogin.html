@@ -1,16 +1,19 @@
 <html>
 <head>
-  <title>Zamp Login</title>
+  <title>Swag</title>
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/loginStyle.css" />
 </head>
 <body>
 
+  <div id="login_div">
+    <h3>Zamp</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+
+    <button onclick="login()">Continue</button>
+  </div>
 
 
-  <input type="email" placeholder="Email..." id="email_field" />
-
-  <button onclick="login()">Continue</button>
 
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <script>
@@ -28,6 +31,7 @@ var firebaseConfig = {
 };
     firebase.initializeApp(firebaseConfig);
   </script>
+
   <script src="assets/js/surveyLogin.js"></script>
 
 </body>
