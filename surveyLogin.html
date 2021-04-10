@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Zamp Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/loginStyle.css" />
+</head>
+<body>
+
+
+
+  <input type="email" placeholder="Email..." id="email_field" />
+
+  <button onclick="login()">Continue</button>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    //:)
+var firebaseConfig = {
+    apiKey: "AIzaSyCl7crXlHPqniJeASl4T1KJEuItdRpv64E",
+    authDomain: "projecto-ae74c.firebaseapp.com",
+    databaseURL: "https://projecto-ae74c-default-rtdb.firebaseio.com",
+    projectId: "projecto-ae74c",
+    storageBucket: "projecto-ae74c.appspot.com",
+    messagingSenderId: "319216252694",
+    appId: "1:319216252694:web:98ab696c38c532d78e4237",
+    measurementId: "G-3YYJK8B644"
+};
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="assets/js/surveyLogin.js"></script>
+
+</body>
+</html>
