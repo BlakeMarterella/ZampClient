@@ -14,7 +14,7 @@ class Header extends HTMLElement {
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="index.html"">
-                                <p>Log out</p>
+                                <p>Log Out</p>
                             </a>
                         </li>
 						<li class="separator hidden-lg"></li>
