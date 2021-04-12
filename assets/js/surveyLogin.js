@@ -15,19 +15,19 @@ function checker(items){
   })
 }
 function nice() {
-var databaseRefPro = firebase.database().ref("Employees");
+  var databaseRefPro = firebase.database().ref("Employees");
 
 
-    databaseRefPro.once('value',function(snapshot){
-       snapshot.forEach(function(childsnapshot) { 
-            var childKey = childsnapshot.key;
-         var childData = childsnapshot.val();
-            const items1 = [
-               { id: childKey, comp : childData.company }
-           ];
-         checker(items1);
-     })
-    })
+      databaseRefPro.once('value',function(snapshot){
+        snapshot.forEach(function(childsnapshot) { 
+             var childKey = childsnapshot.key;
+          var childData = childsnapshot.val();
+             const items1 = [
+                 { id: childKey, comp : childData.company }
+             ];
+           checker(items1);
+       })
+      })
 }
 
 

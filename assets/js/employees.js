@@ -33,13 +33,14 @@ function loadTableData(items) {
     const table = document.getElementById("employees");
     items.forEach( item => {
       let row = table.insertRow();
-      let name = row.insertCell(0);
-      let lastname = row.insertCell(1);
-      let email = row.insertCell(2);
-      let address = row.insertCell(3);
-      let type = row.insertCell(4);
+      let id = row.insertCell(0);
+      let name = row.insertCell(1);
+      let lastname = row.insertCell(2);
+      let email = row.insertCell(3);
+      let address = row.insertCell(4);
+      let type = row.insertCell(5);
       
-
+     id.innerHTML = item.id;
       name.innerHTML = item.firstName;
       lastname.innerHTML = item.lastName;
       email.innerHTML = item.email;
