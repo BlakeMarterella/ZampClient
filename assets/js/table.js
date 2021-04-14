@@ -136,7 +136,7 @@ function updateProfile(){
     var root = firebase.database().ref();
 
    let template =  document.getElementById('template').value;
-    let name = document.getElementById('comp').placeholder; 
+   let name = document.getElementById('comp').placeholder; 
    let alias =  document.getElementById('alias').value;
    let url = document.getElementById('image').src;
        var root = firebase.database().ref();
@@ -155,5 +155,12 @@ function updateProfile(){
 }
 
 
-//img
+let popup = document.querySelector(".popup");
+//Open the popup form
+function openForm() {
+    document.getElementById("popupForm").style.display = "block";
+}
 
+function closeForm() {
+    document.getElementById("popupForm").style.display = "none";
+}

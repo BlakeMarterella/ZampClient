@@ -54,4 +54,7 @@ class Navbar extends HTMLElement {
     }
   }
   
-  customElements.define('navbar-component', Navbar);
+  //Toggle CSS from JS
+//   popup.classList.toggle("hide");
+
+customElements.define('navbar-component', Navbar);
