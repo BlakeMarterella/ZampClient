@@ -20,7 +20,7 @@ var table = new Tabulator("#employees-table", {
         {title:"Priority", field:"priority", editor:"select", editorParams:{values:["low", "medium", "high"]}},
         {title:"Email", field:"email", editor:"input"},
         {title:"Address", field:"address", editor:"input"},
-        {title:"Date Entered", field:"date", editor:"input"},
+        {title:"Date Entered", field:"date", editor:"none"},
         {title:"Shipping Number", field:"shipping", editor:"input"},
         {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
         {title:"ID", field:"ID", width:200, editor:"none", editorParams:{values:["male", "female"]}},
@@ -186,6 +186,13 @@ document.getElementById("download-xlsx").addEventListener("click", function(){
 
 //Delete the selected rows and set the text of the button
 document.getElementById("delete-row").addEventListener("click", function(){
-    console.log("Bruh " + table.getSelectedRows().toString());
-    table.deleteRow(table.getSelectedRows());
+   
+    var id = table.getSelectedData();
+    var counter = 0
+    table.getSelectedRows().forEach(element => {
+        firebase.database().ref(name + 'Employees').child(id[counter].ID).remove();
+        table.deleteRow(element);
+        counter++;
+    });
+    
 });
