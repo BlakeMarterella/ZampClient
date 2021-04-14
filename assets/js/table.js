@@ -23,7 +23,7 @@ var table = new Tabulator("#employees-table", {
         {title:"Date Entered", field:"date", editor:"none"},
         {title:"Shipping Number", field:"shipping", editor:"input"},
         {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
-        {title:"ID", field:"ID", width:200, editor:"none", editorParams:{values:["male", "female"]}},
+        {title:"ID", field:"ID", width:200, editor:"none"},
     ],
     rowSelectionChanged:function(data, rows){
         //update selected row counter on selection change
@@ -166,11 +166,19 @@ function addEmployee(){
 
 //Open the popup form
 function openForm() {
-    //document.getElementById("wrapper").classList.toggle("blur");
+    //document.getElementById("wrapper").style.filter = "blur(15px)";
+    //document.getElementById("form-card").style.filter = "unset";
+
+    // Both methods work to blur the background
+
+    // document.getElementById("wrapper").classList.add("blur");
+    // document.getElementById("form-card").classList.add("focus");
     document.getElementById("popupForm").style.display = "block";
 }
 
 function closeForm() {
+//    document.getElementById("wrapper").classList.remove("blur");
+    document.getElementById("wrapper").style.filter = "unset";
     document.getElementById("popupForm").style.display = "none";
 }
 
