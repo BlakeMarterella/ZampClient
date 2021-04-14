@@ -24,10 +24,6 @@ var table = new Tabulator("#employees-table", {
         {title:"Shipping Number", field:"shipping", editor:"input"},
         {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
         {title:"ID", field:"ID", width:200, editor:"none", editorParams:{values:["male", "female"]}},
-        // {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100, editor:true},
-        // {title:"Color", field:"col", width:130, editor:"input"},
-        // {title:"Date Of Birth", field:"dob", width:130, sorter:"date", hozAlign:"center"},
-        // {title:"Driver", field:"car", width:90,  hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:true},
     ],
 });
 
@@ -181,4 +177,9 @@ document.getElementById("download-csv").addEventListener("click", function(){
 //trigger download of data.xlsx file
 document.getElementById("download-xlsx").addEventListener("click", function(){
     table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
+});
+
+//Delete the selected rows and set the text of the button
+document.getElementById("delete-row").addEventListener("click", function(){
+    table.deleteRow(table.getSelectedRows());
 });
