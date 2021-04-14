@@ -90,7 +90,7 @@ databaseRef.once('value', function(snapshot){
             recieved = true;
         }
 
-        table.addRow({id: childKey, firstname: childData.firstName, lastname: childData.lastName, priority:childData.priority, email: childData.email, address:address, date:childData.date, shipping:childData.shipping, recieved:recieved});
+        table.addRow({ID: childKey, firstname: childData.firstName, lastname: childData.lastName, priority:childData.priority, email: childData.email, address:address, date:childData.date, shipping:childData.shipping, recieved:recieved});
     })
 })
   
