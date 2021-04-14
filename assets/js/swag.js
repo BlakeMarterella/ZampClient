@@ -1,3 +1,4 @@
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -11,3 +12,5 @@ firebase.auth().onAuthStateChanged(function(user) {
       window.location.href = "index.html";
     }
   });
+  
+  document.getElementById('compName').innerText = localStorage.getItem("alias");
