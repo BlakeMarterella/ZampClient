@@ -166,6 +166,7 @@ function addEmployee(){
 
 //Open the popup form
 function openForm() {
+    //document.getElementById("wrapper").classList.toggle("blur");
     document.getElementById("popupForm").style.display = "block";
 }
 
