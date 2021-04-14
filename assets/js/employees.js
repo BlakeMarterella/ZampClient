@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
+  //Loads the company's profile
 function loadProfile(items) {
     console.log(name);
     
@@ -29,6 +30,7 @@ function loadProfile(items) {
     });
 }
 
+//load data into the HTML table
 function loadTableData(items) {
     const table = document.getElementById("employees");
     items.forEach( item => {
@@ -49,6 +51,7 @@ function loadTableData(items) {
     });
 }
 
+//pulls and references the database to grab data
 var databaseRef = firebase.database().ref(name+'Employees');
 var databaseRefPro = firebase.database().ref(name);
 
