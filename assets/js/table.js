@@ -1,12 +1,3 @@
-var tabledata = [
-    {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red", dob:"19/02/1984", car:1},
-    {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue", dob:"14/05/1982", car:true},
-    {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green", dob:"22/05/1982", car:"true"},
-    {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
-    {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow", dob:"31/01/1999"},
-    {id:6, name:"Frank Harbours", progress:38, gender:"male", rating:4, col:"red", dob:"12/05/1966", car:1},
-];
-
 var table = new Tabulator("#employees-table", {
     layout:"fitColumns",      //fit columns to width of table
     responsiveLayout:"hide",  //hide columns that dont fit on the table
@@ -68,27 +59,6 @@ function loadProfile(items) {
        document.getElementById('title').innerHTML = item.alias;
        document.getElementById('image').src = item.imageurl
        document.getElementById('small').innerHTML = item.compName;
-    });
-}
-
-//load data into the HTML table
-function loadTableData(items) {
-    const table = document.getElementById("employees");
-    items.forEach( item => {
-      let row = table.insertRow();
-      let id = row.insertCell(0);
-      let name = row.insertCell(1);
-      let lastname = row.insertCell(2);
-      let email = row.insertCell(3);
-      let address = row.insertCell(4);
-      let type = row.insertCell(5);
-      
-     id.innerHTML = item.id;
-      name.innerHTML = item.firstName;
-      lastname.innerHTML = item.lastName;
-      email.innerHTML = item.email;
-      address.innerHTML = item.address;
-      type.innerHTML = item.type;
     });
 }
 
