@@ -20,7 +20,7 @@ var table = new Tabulator("#employees-table", {
         {title:"Date Entered", field:"date", editor:"input"},
         {title:"Shipping Number", field:"shipping", editor:"input"},
         {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
-        // {title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
+        {title:"ID", field:"ID", width:200, editor:"none", editorParams:{values:["male", "female"]}},
         // {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100, editor:true},
         // {title:"Color", field:"col", width:130, editor:"input"},
         // {title:"Date Of Birth", field:"dob", width:130, sorter:"date", hozAlign:"center"},
