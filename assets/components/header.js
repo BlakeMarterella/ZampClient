@@ -8,7 +8,7 @@ class Header extends HTMLElement {
       <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Zamp</a>
+                    <a class="navbar-brand" href="#"></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">

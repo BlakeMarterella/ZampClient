@@ -10,7 +10,7 @@ class Navbar extends HTMLElement {
       <div class="sidebar" data-color="blue">      
       <div class="sidebar-wrapper">
       <div class="logo">
-          <img src="https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6ImJ1c2luZXNzZXMvbG9nb3Mvb3JpZ2luYWwvNjAwNDE0MC9waWN0dXJlIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxODIsImhlaWdodCI6MTgyfX19" alt="..." 
+          <img src="/assets/img/logo.png" alt="..." 
           style="width:50%;
           height:50%; 
           display:block;
