@@ -25,6 +25,10 @@ var table = new Tabulator("#employees-table", {
         {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
         {title:"ID", field:"ID", width:200, editor:"none", editorParams:{values:["male", "female"]}},
     ],
+    rowSelectionChanged:function(data, rows){
+        //update selected row counter on selection change
+    	document.getElementById("delete-row").innerHTML = "Delete " + data.length + " row(s)";
+    },
 });
 
 
