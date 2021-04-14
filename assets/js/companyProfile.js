@@ -97,5 +97,11 @@ function updateProfile(){
     location.reload()
 }
 
+//Open the popup form
+function openForm() {
+    document.getElementById("popupForm").style.display = "block";
+}
 
-//img
+function closeForm() {
+    document.getElementById("popupForm").style.display = "none";
+}
