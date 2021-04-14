@@ -155,7 +155,6 @@ function updateProfile(){
 }
 
 
-let popup = document.querySelector(".popup");
 //Open the popup form
 function openForm() {
     document.getElementById("popupForm").style.display = "block";
