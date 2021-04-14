@@ -28,7 +28,6 @@ var table = new Tabulator("#employees-table", {
     ],
 });
 
-table.addRow({id:1, firstname:"James", lastname:"Biser", priority:"high", email:"jbiser361@yahoo.com", address:"123 Sesame Street", date:"19/02/1984", shipping:1, recieved:1});
 
 var compName = localStorage.getItem("comp");
 var name = compName
