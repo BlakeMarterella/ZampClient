@@ -14,7 +14,7 @@ var table = new Tabulator("#employees-table", {
     addRowPos:"top",          //when adding a new row, add it to the top of the table
     history:true,             //allow undo and redo actions on the table
     pagination:"local",       //paginate the data
-    paginationSize:30,         //allow 7 rows per page of data
+    paginationSize:30,         //allow 30 rows per page of data
     movableColumns:true,      //allow column order to be changed
     resizableRows:true,       //allow row order to be changed
     initialSort:[             //set the initial sort order of the data
@@ -28,7 +28,7 @@ var table = new Tabulator("#employees-table", {
         {title:"Address", field:"address", editor:"input"},
         {title:"Date Entered", field:"date", editor:"input"},
         {title:"Shipping Number", field:"shipping", editor:"input"},
-        {title:"Recieved", field:"recieved", width:120, editor:"input"},
+        {title:"Recieved", field:"recieved", width:120, hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:false},
         // {title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
         // {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100, editor:true},
         // {title:"Color", field:"col", width:130, editor:"input"},
@@ -114,8 +114,21 @@ databaseRef.once('value', function(snapshot){
         var childKey = childsnapshot.key;
         var childData = childsnapshot.val();
         const items1 = { id: childKey, firstName: childData.firstName, lastName: childData.lastName , email: childData.email, address: childData.address, type : childData.type};
+        
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
 
-        table.addRow({id:2, firstname:"Blake", lastname: childData.lastName, priority:"high", email:"jbiser361@yahoo.com", address:"123 Sesame Street", date:"19/02/1984", shipping:1, recieved:1});
+        var address = childData.street + ", " + childData.city + " " + childData.state + ", " + childData.country;
+        var recieved = false;
+        
+        if (childData.shipping.localeCompare("none")) {
+            recieved = true;
+        }
+
+        table.addRow({id: childKey, firstname: childData.firstName, lastname: childData.lastName, priority:"high", email: childData.email, address:address, date:today, shipping:childData.shipping, recieved:recieved});
     })
 })
   
