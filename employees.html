@@ -33,6 +33,7 @@
     <!-- Install dependencies for Tabulator table -->
     <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -70,7 +71,9 @@
                                 <h4 class="title">Employees</h4>
                                 <p class="category">Manage those who are getting swag.</p>
                             </br>
-                                <button class="btn btn-info" id="add-row" onclick="openForm()">Add Record</button>
+                                <button class="btn btn-info btn-fill" id="add-row" onclick="openForm()">Add Record</button>
+                                <button class="btn btn-info pull-right" id="download-csv">Download CSV</button>
+                                <button class="btn btn-info pull-right" id="download-xlsx">Download XLSX</button>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <div id="employees-table"></div>

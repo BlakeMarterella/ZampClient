@@ -12,6 +12,9 @@ var table = new Tabulator("#employees-table", {
         {column:"lastname", dir:"asc"},
     ],
     columns:[                 //define the table columns
+        {formatter:"rowSelection", titleFormatter:"", width:20, hozAlign:"center", headerSort:false, cellClick:function(e, cell){
+            cell.getRow().toggleSelect();
+          }},
         {title:"First Name", field:"firstname", editor:"input"},
         {title:"Last Name", field:"lastname", editor:"input"},
         {title:"Priority", field:"priority", editor:"select", editorParams:{values:["low", "medium", "high"]}},
@@ -169,3 +172,13 @@ function openForm() {
 function closeForm() {
     document.getElementById("popupForm").style.display = "none";
 }
+
+//Functions to download the data from the table
+document.getElementById("download-csv").addEventListener("click", function(){
+    table.download("csv", "data.csv");
+});
+
+//trigger download of data.xlsx file
+document.getElementById("download-xlsx").addEventListener("click", function(){
+    table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
+});
