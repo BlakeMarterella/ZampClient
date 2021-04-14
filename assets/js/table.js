@@ -185,5 +185,6 @@ document.getElementById("download-xlsx").addEventListener("click", function(){
 
 //Delete the selected rows and set the text of the button
 document.getElementById("delete-row").addEventListener("click", function(){
+    console.log("Bruh " + table.getSelectedRows().toString());
     table.deleteRow(table.getSelectedRows());
 });
