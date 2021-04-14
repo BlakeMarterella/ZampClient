@@ -1,5 +1,7 @@
 var compName = localStorage.getItem("comp");
 var name = compName
+document.getElementById('compName').innerText = localStorage.getItem("alias");
+
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -19,8 +21,8 @@ function loadProfile(items) {
     console.log(name);
     
     items.forEach( item => {
-
-      document.getElementById('template').value = item.tempText;
+       document.getElementById('compName').innerText = item.alias
+       document.getElementById('template').value = item.tempText;
        document.getElementById('comp').placeholder = item.compName;
        document.getElementById('alias').value = item.alias;
        document.getElementById('title').innerHTML = item.alias;

@@ -12,4 +12,28 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
+  var compName = localStorage.getItem("comp");
+  var name = compName
+  var databaseRefPro = firebase.database().ref(name);
 
+databaseRefPro.once('value',function(snapshot){
+    snapshot.forEach(function(childsnapshot) { 
+        var childKey = childsnapshot.key;
+        var childData = childsnapshot.val();
+        const items1 = [
+            { id: childKey, alias: childData.alias, color: childData.color , imageurl: childData.imageUrl, tempText : childData.templateText, compName: childData.companyName}
+        ];
+        loadProfile(items1);
+    })
+})
+
+
+function loadProfile(items) {
+    console.log(name);
+    
+    items.forEach( item => {
+    document.getElementById('compName').innerText = item.alias
+    localStorage.setItem("alias", item.alias); 
+
+    });
+}
