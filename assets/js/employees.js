@@ -8,7 +8,7 @@ function addEmployee(){
     let country = document.getElementById('country').value
     let email = document.getElementById('email').value
     let priority = document.getElementById('priority').value
-    let date = 
+    let date = Date.toString()
     var root = firebase.database().ref();
     
     var user = {
