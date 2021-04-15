@@ -167,12 +167,6 @@ function addEmployee(){
 //Open the popup form
 function openForm() {
     document.getElementById("wrapper").style.filter = "blur(15px)";
-    // document.getElementById("form-card").style.filter = "unset";
-
-    // Both methods work to blur the background
-
-    // document.getElementById("wrapper").classList.add("blur");
-    // document.getElementById("form-card").classList.add("focus");
     document.getElementById("popupForm").style.display = "block";
 }
 
