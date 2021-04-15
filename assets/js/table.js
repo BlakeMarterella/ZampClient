@@ -166,8 +166,8 @@ function addEmployee(){
 
 //Open the popup form
 function openForm() {
-    //document.getElementById("wrapper").style.filter = "blur(15px)";
-    //document.getElementById("form-card").style.filter = "unset";
+    document.getElementById("wrapper").style.filter = "blur(15px)";
+    // document.getElementById("form-card").style.filter = "unset";
 
     // Both methods work to blur the background
 
