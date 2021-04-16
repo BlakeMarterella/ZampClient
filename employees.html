@@ -111,9 +111,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Priority</label>
-                                <!-- <input id="priority" type="select" class="form-control" placeholder="high" required> -->
-                                <select class="form-control" id="inputGroupSelect01" id="priority">
-                                    <option selected>Select Priority</option>
+                                <select class="form-control" id="priority" required>
+                                    <option disabled selected>Select Priority</option>
                                     <option value="high">High</option>
                                     <option value="medium">Medium</option>
                                     <option value="low">Low</option>
@@ -224,6 +223,6 @@
     };
     firebase.initializeApp(firebaseConfig);
 </script>
-<script type="text/javascript" src="assets/js/table.js"></script>
+<script type="text/javascript" src="assets/js/employees.js"></script>
 
 </html>
