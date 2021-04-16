@@ -33,12 +33,16 @@ var table = new Tabulator("#employees-table", {
         {
             title: "Last Name",
             field: "lastname",
-            editor: "input"
+            editor: "input",
+
+            
         },
         {
             title: "Priority",
             field: "priority",
             editor: "select",
+            width: 100,
+
             editorParams: {
                 values: ["low", "medium", "high"]
             }
@@ -66,7 +70,7 @@ var table = new Tabulator("#employees-table", {
         {
             title: "Recieved",
             field: "recieved",
-            width: 120,
+            width: 100,
             hozAlign: "center",
             formatter: "tickCross",
             sorter: "boolean",
@@ -174,7 +178,7 @@ function addEmployee() {
          address = street + ", " + city + " " + state + ", " + country;
     }
     else {
-        address == "N/A"
+        address = "N/A"
     }
 
     if (priority == "Select Priority") {
@@ -219,6 +223,9 @@ function saveEdits() {
         var id = table.getSelectedData();
         var n = 0
         table.getSelectedRows().forEach(element => {
+            if (id[n].address == "") {
+                id[n].address = "N/A"
+            }
             var employee = {
 
                 firstName: id[n].firstname,
@@ -226,10 +233,8 @@ function saveEdits() {
                 email: id[n].email,
                 priority: id[n].priority,
                 shipping: id[n].shipping,
-                // street: id[counter].ID,
-                // city: id[counter].ID,
-                // country: id[counter].ID,
-                // state: id[counter].ID,
+                address: id[n].address
+
             };
             var em = {
                 company: name,
