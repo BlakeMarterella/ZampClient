@@ -231,8 +231,13 @@ function saveEdits() {
                 // country: id[counter].ID,
                 // state: id[counter].ID,
             };
-
+            var em = {
+                company: name,
+            };
             firebase.database().ref(name + 'Employees').child(id[n].ID).set(employee);
+            var ret = id[n].email.replace('.', '');
+            firebase.database().ref("Employees").child(ret).set(em);
+
             n++;
 
         }) 
