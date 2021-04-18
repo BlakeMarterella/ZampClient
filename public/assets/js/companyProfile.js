@@ -27,7 +27,7 @@ function loadProfile(items) {
        document.getElementById('comp').placeholder = item.compName;
        document.getElementById('alias').value = item.alias;
        document.getElementById('title').innerHTML = item.alias;
-       document.getElementById('image').src = item.imageurl
+       document.getElementById('image').value = item.imageurl
        document.getElementById('small').innerHTML = item.compName;
     });
 }
@@ -78,10 +78,11 @@ databaseRef.once('value',function(snapshot){
 function updateProfile(){
     var root = firebase.database().ref();
 
-   let template =  document.getElementById('template').value;
+    let template =  document.getElementById('template').value;
     let name = document.getElementById('comp').placeholder; 
-   let alias =  document.getElementById('alias').value;
-   let url = document.getElementById('image').src;
+     let alias =  document.getElementById('alias').value;
+    let url = document.getElementById('image').value;
+    console.log(url)
        var root = firebase.database().ref();
     // document.getElementById('title').innerHTML; 
     // document.getElementById('image').src; 
