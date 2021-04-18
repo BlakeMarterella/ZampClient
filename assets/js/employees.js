@@ -67,7 +67,7 @@ var table = new Tabulator("#employees-table", {
             field: "shipping",
             editor: "input"
         },
-        {
+      /*{
             title: "Recieved",
             field: "recieved",
             width: 100,
@@ -75,7 +75,7 @@ var table = new Tabulator("#employees-table", {
             formatter: "tickCross",
             sorter: "boolean",
             editor: false
-        },
+        }, */
         {
             title: "ID",
             field: "ID",
