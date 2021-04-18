@@ -27,7 +27,7 @@ function loadProfile(items) {
        document.getElementById('comp').placeholder = item.compName;
        document.getElementById('alias').value = item.alias;
        document.getElementById('title').innerHTML = item.alias;
-       document.getElementById('image').value = item.imageurl
+       document.getElementById('image2').src = item.imageurl
        document.getElementById('small').innerHTML = item.compName;
     });
 }
