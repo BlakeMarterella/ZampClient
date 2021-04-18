@@ -33,16 +33,33 @@ firebase.auth().onAuthStateChanged(function(user) {
 //     { "Name": "John", "Job": "Programmer" },
 //     { "Name": "Kevin", "Job": "Scientist" },
 // ];
-
+var ids = [];
+var counter = 0
 function loadItems(item) {
   $.each(item, function (i) {
-    var templateString = '<div class="col-md-4"><div class="card mb-2 box-shadow"><img class="card-img-top" src=' + item[i].image + ' alt="Card image cap"><div class="card-body"><h5 id="nice">' + item[i].Name + '</h5> <h5 id="cool">' + item[i].id + '</h5 <br> </p><button id="presses" onclick="getID()">test</button></div></div></div>';
+    var templateString = '<div class="col-md-4"><div class="card mb-2 box-shadow"><img class="card-img-top" src=' + item[i].image + ' alt="Card image cap"><div class="card-body"><h5 id="nice">' + item[i].Name + '</h5> <label id="cool">' + item[i].id + '</label <br> </p>  <button id="press" onclick="getID('+counter+')"> ' +item[i].id+ '</button> </div></div></div>';
     $('#cards').append(templateString);
+    const dic =
+      { index : counter,
+        id : item[i].id
+      };
+    ids.push(dic)
+    counter++;
 })
 }
 
-function getID(){
-console.log("lkjn");
+function getID(num){
+  console.log(num);
+  console.log(ids);
+  var i = 0
+  ids.forEach( item => {
+    if (item.index == num) {
+      window.alert("item " + item.id)
+      return; 
+    }
+    i++;
+  });
+
 }
 
 
