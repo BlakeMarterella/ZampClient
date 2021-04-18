@@ -15,17 +15,34 @@ firebase.auth().onAuthStateChanged(function(user) {
   
   document.getElementById('compName').innerText = localStorage.getItem("alias");
 
-var arr = [
-    { "Name": "Peter", "Job": "Programmer" },
-    { "Name": "John", "Job": "Programmer" },
-    { "Name": "Kevin", "Job": "Scientist" },
-];
+  var databaseRefPro = firebase.database().ref("Swag");
 
-$.each(arr, function (i) {
-    var templateString = '<div class="col-md-4"><div class="card mb-2 box-shadow"><img class="card-img-top" src="http://safarset.com/wp-content/uploads/2019/05/IMG-20190423-WA0029.jpeg" alt="Card image cap"><div class="card-body"><h5 id="nice">' + arr[i].Name + '</h5></p><button id="presses" onclick="logout()">test</button></div></div></div>';
+
+  databaseRefPro.once('value',function(snapshot){
+    snapshot.forEach(function(childsnapshot) { 
+         var childKey = childsnapshot.key;
+      var childData = childsnapshot.val();
+         const items1 = [
+             { id: childKey, Name : childData.brand, image : childData.image, price : childData.price, title : childData.title }
+         ];
+       loadItems(items1);
+   })
+  })
+// var arr = [
+//     { "Name": "Peter", "Job": "Programmer" },
+//     { "Name": "John", "Job": "Programmer" },
+//     { "Name": "Kevin", "Job": "Scientist" },
+// ];
+
+function loadItems(item) {
+  $.each(item, function (i) {
+    var templateString = '<div class="col-md-4"><div class="card mb-2 box-shadow"><img class="card-img-top" src=' + item[i].image + ' alt="Card image cap"><div class="card-body"><h5 id="nice">' + item[i].Name + '</h5> <h5 id="cool">' + item[i].id + '</h5 <br> </p><button id="presses" onclick="getID()">test</button></div></div></div>';
     $('#cards').append(templateString);
 })
-
-function logout(){
-
 }
+
+function getID(){
+console.log("lkjn");
+}
+
+

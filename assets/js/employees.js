@@ -234,8 +234,8 @@ function saveEdits() {
                 priority: id[n].priority,
                 shipping: id[n].shipping,
                 address: id[n].address
-
             };
+            
             var em = {
                 company: name,
             };
