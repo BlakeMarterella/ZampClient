@@ -31,7 +31,7 @@ class Navbar extends HTMLElement {
               <li>
               <a href="swag.html">
                   <i class="pe-7s-plugin"></i>
-                  <p>Swag Manager</p>
+                  <p>Swag Builder</p>
               </a>
               </li>
               <li>
