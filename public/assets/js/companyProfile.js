@@ -83,6 +83,29 @@ databaseRef.once('value', function (snapshot) {
     })
 })
 
+function test(){
+
+    var email = "assdfas@n.com"
+    var password = "niudsnafilujk"
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Signed in
+        firebase.database().ref(this.name + "Admin").push(userA);
+        var ret = email.replace('.', '');
+        var em = {
+            company: name,
+        };
+        firebase.database().ref("ids").child(ret).set(em);
+        location.reload()
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + ' - ' + errorMessage);
+    });
+}
+
 function addEmployee() {
     let firstName = document.getElementById('firstname').value
     let lastName = document.getElementById('lastname').value
