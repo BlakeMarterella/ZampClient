@@ -204,7 +204,7 @@ function addEmployee() {
 
 //Open the popup form
 function openForm() {
-    document.getElementById("wrapper").style.filter = "blur(15px)";
+    document.getElementById("wrapper").style.filter = "blur(8px)";
     document.getElementById("popupForm").style.display = "block";
 }
 
