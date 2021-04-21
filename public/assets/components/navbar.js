@@ -10,7 +10,7 @@ class Navbar extends HTMLElement {
       <div class="sidebar" data-color="blue">      
       <div class="sidebar-wrapper">
       <div class="logo">
-          <img src="/assets/img/logo.png" alt="..." 
+          <img src="assets/img/logo.png" alt="..." 
           style="width:50%;
           height:50%; 
           display:block;
