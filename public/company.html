@@ -29,6 +29,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="assets/css/imgur.css" rel="stylesheet" media="screen">
+
 </head>
 <body>
 
@@ -90,6 +92,7 @@
                                             <label>Order Administrators</label>
                                         <div class="card">
                                     <div class="content table-responsive table-full-width">
+
                                     <table class="table table-hover table-striped">
                                          <thead>
                                             <th>ID</th>
@@ -101,9 +104,9 @@
                                               <!-- data is pulled from firebase -->
                                         </tbody>
                                     </table>
-                                    </div>
-                                    <button type="submit"  onclick="openForm()" class="btn btn-info pull-left">Add Admin</button>
                                     
+                                    </div>
+
                                     <div class="col-md-8" 
                                     id="popupForm"
                                     style="
@@ -117,7 +120,7 @@
                                     transform: translate(-50%, 50%);
                                     border: 3px solid #999999;
                                     z-index: 9;"
-                                onclick="event.stopPropagation()">
+                                onclick="event.stopPropagation()"> 
                                     <div class="card" >
                                         <div class="header">
                                             <h4 class="title">Add Administrator</h4>
@@ -128,13 +131,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group" >
                                                             <label>First Name</label>
-                                                            <input id="firstname" type="text" class="form-control" placeholder="first name" >
+                                                            <input id="firstname" type="text" class="form-control" placeholder="first name" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group" >
                                                             <label>Last Name</label>
-                                                            <input id="lastname" type="text" class="form-control" placeholder="last name" >
+                                                            <input id="lastname" type="text" class="form-control" placeholder="last name" required>
                                                         </div>
                                                     </div>
                                                 </div>                            
@@ -142,12 +145,18 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group" >
                                                         <label>Email</label>
-                                                        <input id="email" type="text" class="form-control" placeholder="generic@gmail.com" >
+                                                        <input id="email" type="text" class="form-control" placeholder="generic@gmail.com" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" >
+                                                        <label>Password</label>
+                                                        <input id="password" type="text" class="form-control" placeholder="Password" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </br>
-                                                <button type="submit"  onclick="updateProfile()" class="btn btn-info btn-fill pull-right">Add</button>
+                                                <button type="submit" onclick="addEmployee()" class="btn btn-info btn-fill pull-right">Add</button>
                                                 <button type="submit"  onclick="closeForm()" class="btn btn-info btn-fill pull-left">Close</button>
                                             </form>
                                         </div>
@@ -159,10 +168,12 @@
 <!---------------------------------------------------->                                
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <form action="/action_page.php">
-                                            <label for="img">Select image:</label>
-                                            <input  type="file" id="img" name="img" accept="image/*">
-                                        </form>
+                                        <div class="dropzone">
+                                            <div class="info"></div>
+                                            
+                                        </div>
+                                        <br>
+                                            <input id="image" class="image-url" placeholder="Enter image URL here" value= ""> 
                                    </div>
                                 </div>
                             </br>
@@ -177,11 +188,14 @@
                                     </div>
 
                                     <button type="submit"  onclick="updateProfile()" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit"  onclick="openForm()" class="btn btn-info btn-fill pull-left">Add Admin</button>
+
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>
                     </div>
+
 
 <!---------------------------------------------------->
 <!--                  END FORM                      -->
@@ -196,7 +210,7 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img id="image" class="avatar border-gray" src="" alt="..."/>
+                                    <img id="image2" class="avatar border-gray" src="" alt="..."/>
 
                                       <h4 id="title" class="title">Company<br />
                                     </h4>
@@ -259,5 +273,7 @@
       </script>
 
       <script src="assets/js/companyProfile.js"></script>
+      <script src="assets/js/imgur.js"></script>
+      <script src="assets/js/upload.js"></script>
 
 </html>

@@ -33,12 +33,16 @@ var table = new Tabulator("#employees-table", {
         {
             title: "Last Name",
             field: "lastname",
-            editor: "input"
+            editor: "input",
+
+            
         },
         {
             title: "Priority",
             field: "priority",
             editor: "select",
+            width: 100,
+
             editorParams: {
                 values: ["low", "medium", "high"]
             }
@@ -63,15 +67,15 @@ var table = new Tabulator("#employees-table", {
             field: "shipping",
             editor: "input"
         },
-        {
+      /*{
             title: "Recieved",
             field: "recieved",
-            width: 120,
+            width: 100,
             hozAlign: "center",
             formatter: "tickCross",
             sorter: "boolean",
             editor: false
-        },
+        }, */
         {
             title: "ID",
             field: "ID",
@@ -88,6 +92,7 @@ var table = new Tabulator("#employees-table", {
 
 var compName = localStorage.getItem("comp");
 var name = compName
+var counter = 0
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -112,7 +117,6 @@ databaseRef.once('value', function (snapshot) {
         var childKey = childsnapshot.key;
         var childData = childsnapshot.val();
 
-        var address = childData.street + ", " + childData.city + " " + childData.state + ", " + childData.country;
         var recieved = false;
 
         if (childData.shipping.localeCompare("none")) {
@@ -125,11 +129,12 @@ databaseRef.once('value', function (snapshot) {
             lastname: childData.lastName,
             priority: childData.priority,
             email: childData.email,
-            address: address,
+            address: childData.address,
             date: childData.date,
             shipping: childData.shipping,
             recieved: recieved
         });
+        counter++;
     })
 })
 
@@ -168,6 +173,13 @@ function addEmployee() {
     var root = firebase.database().ref();
     var e = document.getElementById("priority");
     var priority = e.value;
+    var address = ""
+    if (street != "" && city != "" && state != "" && country != "") {
+         address = street + ", " + city + " " + state + ", " + country;
+    }
+    else {
+        address = "N/A"
+    }
 
     if (priority == "Select Priority") {
         priority = "N/A"
@@ -176,13 +188,10 @@ function addEmployee() {
         var user = {
             firstName: firstName,
             lastName: lastName,
-            street: street,
-            city: city,
+            address: address,
             email: email,
             priority: priority,
             shipping: "none",
-            country: country,
-            state: state,
             date: date
         };
 
@@ -195,11 +204,50 @@ function addEmployee() {
         console.log(ret);
         firebase.database().ref("Employees").child(ret).set(em);
         location.reload()
-    }
-    else {
+    } else {
         window.alert("Please fill out the required data.")
     }
 
+}
+
+function saveEdits() {
+    // #employees-table
+    var id = table.getData();
+    var counter2 = 1
+    var countDown = counter
+    while (countDown > 0) {
+        countDown--;
+    }
+    //"-MYIH5ATFAFE9UdTFNgn"
+        table.selectRow("visible")
+        var id = table.getSelectedData();
+        var n = 0
+        table.getSelectedRows().forEach(element => {
+            if (id[n].address == "") {
+                id[n].address = "N/A"
+            }
+            var employee = {
+
+                firstName: id[n].firstname,
+                lastName: id[n].lastname,
+                email: id[n].email,
+                priority: id[n].priority,
+                shipping: id[n].shipping,
+                address: id[n].address
+            };
+            
+            var em = {
+                company: name,
+            };
+            firebase.database().ref(name + 'Employees').child(id[n].ID).set(employee);
+            var ret = id[n].email.replace('.', '');
+            firebase.database().ref("Employees").child(ret).set(em);
+
+            n++;
+
+        }) 
+        table.deselectRow("visable");
+        location.reload()
 }
 
 //Open the popup form
