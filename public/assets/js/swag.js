@@ -63,5 +63,5 @@ function getID(num) {
     }
     i++;
   });
-
+  document.getElementById("selected").innerHTML("bruh");
 }
