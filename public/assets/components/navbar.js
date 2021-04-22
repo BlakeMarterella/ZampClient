@@ -7,8 +7,6 @@ class Navbar extends HTMLElement {
 
     connectedCallback() {
       this.innerHTML = `
-      <div class="sidebar" data-color="blue">      
-      <div class="sidebar-wrapper">
       <div class="logo">
           <img src="assets/img/logo.png" alt="..." 
           style="width:50%;
@@ -20,41 +18,11 @@ class Navbar extends HTMLElement {
           <a target="_blank" href="http://www.zampmarketing.com" class="simple-text">
               Zamp Marketing
           </a>
-      </div>    
-          <ul class="nav">
-              <li>
-                  <a href="dashboard.html">
-                      <i class="pe-7s-home"></i>
-                      <p>Home</p>
-                  </a>
-              </li>
-              <li>
-              <a href="swag.html">
-                  <i class="pe-7s-plugin"></i>
-                  <p>Swag Builder</p>
-              </a>
-              </li>
-              <li>
-                  <a href="employees.html">
-                      <i class="pe-7s-note2"></i>
-                      <p>Employees</p>
-                  </a>
-              </li>
-              <li>
-              <a href="company.html">
-                  <i class="pe-7s-config"></i>
-                  <p>Company Profile</p>
-              </a>
-              </li>
-          </ul>
-      </div>
-  </div>
-  </div>
-      `;
+      </div>`;
     }
   }
   
   //Toggle CSS from JS
 //   popup.classList.toggle("hide");
 
-customElements.define('navbar-component', Navbar);
+customElements.define('logo-component', Navbar);
