@@ -79,6 +79,8 @@ databaseRef.once('value', function (snapshot) {
             lastName: childData.lastName,
             email: childData.email
         }];
+        console.log(snapshot.numChildren()); 
+
         loadTableData(items1);
     })
 })
