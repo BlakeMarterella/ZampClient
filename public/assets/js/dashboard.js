@@ -37,3 +37,11 @@ function loadProfile(items) {
 
     });
 }
+var databaseRef = firebase.database().ref(name + "Employees");
+databaseRef.once('value', function (snapshot) {
+  snapshot.forEach(function (childsnapshot) {
+    
+      console.log(snapshot.numChildren()); 
+      document.getElementById('employeeCount').innerText = snapshot.numChildren()
+  })
+})
