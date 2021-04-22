@@ -192,7 +192,7 @@ function addEmployee() {
             email: email,
             priority: priority,
             shipping: "none",
-            date: date
+            date: date,
         };
 
 
@@ -233,7 +233,8 @@ function saveEdits() {
                 email: id[n].email,
                 priority: id[n].priority,
                 shipping: id[n].shipping,
-                address: id[n].address
+                address: id[n].address,
+                date: id[n].date
             };
             
             var em = {
