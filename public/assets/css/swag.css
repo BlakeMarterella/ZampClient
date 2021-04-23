@@ -10,11 +10,11 @@
 }
 
 .card-title {
-
+    font-weight: bold;
 }
 
 .card-description {
-    
+    font-style: italic;
 }
 
 .card-button {
