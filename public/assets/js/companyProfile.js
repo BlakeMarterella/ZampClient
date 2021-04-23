@@ -30,6 +30,7 @@ function loadProfile(items) {
         document.getElementById('image2').src = item.imageurl
         document.getElementById('small').innerHTML = item.compName;
         document.getElementById('description').innerHTML = item.tempText;
+
     });
 }
 
@@ -68,7 +69,7 @@ databaseRefPro.once('value', function (snapshot) {
         }];
         loadProfile(items1);
     })
-})
+}) 
 
 databaseRef.once('value', function (snapshot) {
     snapshot.forEach(function (childsnapshot) {
@@ -86,7 +87,6 @@ databaseRef.once('value', function (snapshot) {
     })
 })
 
-//TODO do we need to remove this?
 function test(){
 
     var email = "assdfas@n.com"
@@ -158,6 +158,9 @@ function updateProfile() {
     // document.getElementById('title').innerHTML; 
     // document.getElementById('image').src; 
     // document.getElementById('small').innerHTML;
+    if (url == "") {
+        url = document.getElementById('image2').src
+    }
 
     var user = {
         alias: alias,
