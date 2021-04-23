@@ -142,22 +142,22 @@
                                                     </div>
 
                                                     <div class="col-md-8" id="popupForm" style="
-                                    position: relative;
-                                    text-align: center;
-                                    width: 80%;
-                                    display: none;
-                                    position: fixed;
-                                    left: 50%;  
-                                    top: 5%;
-                                    transform: translate(-50%, 50%);
-                                    border: 3px solid #999999;
-                                    z-index: 9;">
-                                                        <div class="card">
+                                                    position: relative;
+                                                    text-align: center;
+                                                    width: 80%;
+                                                    display: none;
+                                                    position: fixed;
+                                                    left: 50%;  
+                                                    top: 5%;
+                                                    transform: translate(-50%, 50%);
+                                                    z-index: 9;">
+                                                        <div class="card" style="border: 2px solid gray;">
                                                             <div class="header">
                                                                 <h4 class="title">Add Administrator</h4>
                                                             </div>
                                                             <div class="content">
                                                                 <form>
+                                                                    <!-- Values for each row must add up to be 12 -->
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
@@ -176,6 +176,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <!---------------------------------------------------->
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
@@ -195,12 +196,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <!---------------------------------------------------->
                                                                     </br>
                                                                         <button  onclick="addEmployee()"
                                                                         class="btn btn-info btn-fill pull-right">Add</button>
-                                                                    <button type="submit" onclick="closeForm()"
+                                                                        <button type="submit" onclick="closeForm()"
                                                                         class="btn btn-info btn-fill pull-left">Close</button>
-
+                                                                    <div class="clearfix"></div>
                                                                 </form>
                                                             </div>
                                                         </div>
