@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 document.getElementById('compName').innerText = localStorage.getItem("alias");
 
 var databaseRefPro = firebase.database().ref("Swag");
-
+var arr = []
 
 databaseRefPro.once('value', function (snapshot) {
   snapshot.forEach(function (childsnapshot) {
@@ -46,7 +46,11 @@ function loadItems(item) {
     $('#cards').append(templateString);
     const dic = {
       index: counter,
-      id: item[i].id
+      id: item[i].id,
+      name: item[i].Name,
+      price: item[i].price,
+      title: item[i].title,
+      image: item[i].image
     };
     ids.push(dic)
     counter++;
@@ -59,12 +63,40 @@ function getID(num) {
   var i = 0
   ids.forEach(item => {
     if (item.index == num) {
-      window.alert("item " + item.id)
+      if (!arr.includes(item.id)) {
+          arr.push(item.id)
+          const dic = {
+            index: counter,
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            title: item.title,
+            image: item.image
+          };
+          loadSelectTable(dic)
+          window.alert("item " + item.id)
+
+      }
       return;
     }
     i++;
   });
   document.getElementById("selected").innerHTML("bruh");
+}
+function loadSelectTable(s){
+  const table = document.getElementById("swag");
+
+      let row = table.insertRow();
+      let name = row.insertCell(0);
+      let brand = row.insertCell(1);
+      let unitPrice = row.insertCell(2);
+      let id = row.insertCell(3);
+      id.innerHTML = s.id;
+      name.innerHTML = s.title;
+      brand.innerHTML = s.name;
+      unitPrice.innerHTML = s.price
+
+  
 }
 
 //If the array is empty and there arent any products, hide the pricing info card
