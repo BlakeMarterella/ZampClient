@@ -42,7 +42,7 @@ var counter = 0
 function loadItems(item) {
   $.each(item, function (i) {
     var templateString = 
-    '<div class="col-md-4"><div class="content"><div class="card mb-2 box-shadow"><img class="card-img" src=' + item[i].image + ' alt="Card image cap"><div class="card-body"><h5 class="card-title" id="nice">' + item[i].Name + '</h5> <label class="card-description" id="cool">' + item[i].id + '</label <br> </p>  <button id="press"  class="btn btn-info btn-fill card-button" onclick="getID(' + counter + ')">+</button> </div></div></div></div>';
+    '<div class="col-md-4"><div class="content"><div class="card mb-2 box-shadow"><img class="card-img" src=' + item[i].image + ' alt="Card image cap"><div class="card-body"><h5 class="card-title" id="nice">' + item[i].Name + '</h5> <label class="card-description" id="cool">' + item[i].id + '</label <br> </p>  <button id="press"  class="btn btn-info btn-fill card-button" onclick="getID(' + counter + ')">Add Product</button> </div></div></div></div>';
     $('#cards').append(templateString);
     const dic = {
       index: counter,
