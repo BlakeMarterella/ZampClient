@@ -253,12 +253,12 @@ function saveEdits() {
 
 //Open the popup form
 function openForm() {
-    document.getElementById("wrapper").style.filter = "blur(8px)";
+    document.getElementById("wrapper").style.filter = "blur(3px)";
     document.getElementById("popupForm").style.display = "block";
+    
 }
 
 function closeForm() {
-    //    document.getElementById("wrapper").classList.remove("blur");
     document.getElementById("wrapper").style.filter = "unset";
     document.getElementById("popupForm").style.display = "none";
 }
