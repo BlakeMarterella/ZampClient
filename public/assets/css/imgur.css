@@ -82,3 +82,8 @@ body.loading .loading-modal {
     margin-bottom: 15%;
 }
 
+.image-url {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
