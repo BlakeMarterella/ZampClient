@@ -17,7 +17,7 @@ var table = new Tabulator("#employees-table", {
     columns: [ //define the table columns
         {
             formatter: "rowSelection",
-            titleFormatter: "",
+            titleFormatter: "rowSelection",
             width: 20,
             hozAlign: "center",
             headerSort: false,
