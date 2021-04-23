@@ -101,6 +101,7 @@ function test(){
             company: name,
         };
         firebase.database().ref("ids").child(ret).set(em);
+        console.log(errorCode + ' - ' + errorMessage);
         location.reload()
     })
     .catch((error) => {
