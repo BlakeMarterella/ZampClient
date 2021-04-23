@@ -29,6 +29,7 @@ function loadProfile(items) {
         document.getElementById('title').innerHTML = item.alias;
         document.getElementById('image2').src = item.imageurl
         document.getElementById('small').innerHTML = item.compName;
+        document.getElementById('description').innerHTML = item.tempText;
     });
 }
 
@@ -85,6 +86,7 @@ databaseRef.once('value', function (snapshot) {
     })
 })
 
+//TODO do we need to remove this?
 function test(){
 
     var email = "assdfas@n.com"
