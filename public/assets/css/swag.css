@@ -22,3 +22,25 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.pricing {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.entry img{
+    width: 2em;
+    height: auto;
+}
+
+.entry brand {
+    font-weight: bold;
+}
+
+.entry price {
+    font-weight: 300;
+}
+
+.entry .remove{
+    background-color: green;
+}

@@ -67,8 +67,10 @@ function getID(num) {
   document.getElementById("selected").innerHTML("bruh");
 }
 
+//If the array is empty and there arent any products, hide the pricing info card
 if(ids.length < 1) {
-  document.getElementById("pricing").style.display = "none";
+  // document.getElementById("pricing").style.display = "none";
+  document.getElementById("pricing").style.display = "block";
 }
 else {
   document.getElementById("pricing").style.display = "block";
