@@ -66,3 +66,10 @@ function getID(num) {
   });
   document.getElementById("selected").innerHTML("bruh");
 }
+
+if(ids.length < 1) {
+  document.getElementById("pricing").style.display = "none";
+}
+else {
+  document.getElementById("pricing").style.display = "block";
+}

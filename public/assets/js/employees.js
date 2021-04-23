@@ -255,7 +255,6 @@ function saveEdits() {
 function openForm() {
     document.getElementById("wrapper").style.filter = "blur(3px)";
     document.getElementById("popupForm").style.display = "block";
-    
 }
 
 function closeForm() {
