@@ -59,7 +59,7 @@ function initChartist() {
   var data = {
     labels: dates,
     series: [
-      [542, 443, 320, 780, 553, 453, 326, 434]
+      [542, 443, 320, 780, 553, 453, 343]
     ]
   };
 
