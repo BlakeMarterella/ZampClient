@@ -176,7 +176,9 @@ function updateProfile() {
 
 //Open the popup form
 function openForm() {
-    document.getElementById("popupForm").style.display = "block";
+    window.location.href = "addAdmin.html";
+
+   // document.getElementById("popupForm").style.display = "block";
 }
 
 function closeForm() {
