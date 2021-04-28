@@ -34,6 +34,11 @@ function checker(items){
     }
   })
 }
+
+function resetPassword(){
+  window.location.href = "passwordReset.html";
+}
+
 function nice(){
 var databaseRefPro = firebase.database().ref("ids");
 
