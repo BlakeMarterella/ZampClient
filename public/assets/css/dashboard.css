@@ -1,8 +1,34 @@
 #slideshow {
     width: 240px;
     height: 240px;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
   
 #slideshow > div {
     position: absolute;
+}
+
+#slideshow img {
+    width: 20em;
+    height: 20em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.card {
+    align-items: center;
+    text-align: center;
+    height: 24em;
+}
+
+.shout {
+    font-size : 20vmin !important;
+    overflow: hidden !important;
+}
+
+img {   
+    padding-bottom: 1em;
 }
