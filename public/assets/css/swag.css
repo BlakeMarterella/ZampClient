@@ -15,14 +15,19 @@
 }
 
 .card-description {
-    font-style: italic;
-    text-align: center;
+    font-weight: lighter;
+    margin: 2em auto auto auto;
 }
 
 .card-button {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1em auto 1em auto;
+    border-width: 2px;
+    background-color: transparent;
+    font-weight: 400;
+    padding: 8px 16px;
+    border-color: #3472F7;
+    color: #3472F7;
 }
 
 .pricing {
@@ -49,10 +54,4 @@
 .entry .price {
     margin-left: 5px;
     font-weight: 300;
-}
-
-/* WHY WONT THIS BE VERTICALLY CENTERED?!?!?!?!? */
-.entry .remove{
-    /* background-color: red; */
-    display: block;
 }
