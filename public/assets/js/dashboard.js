@@ -37,13 +37,38 @@ function loadProfile(items) {
 
     });
 }
+
+var numChildren;
+var totalCost = "";
 var databaseRef = firebase.database().ref(name + "Employees");
 databaseRef.once('value', function (snapshot) {
   snapshot.forEach(function (childsnapshot) {
     
       console.log(snapshot.numChildren()); 
-      document.getElementById('employeeCount').innerText = snapshot.numChildren()
-      document.getElementById('totalCost').innerText = '$6,382.34'
+      numChildren = snapshot.numChildren();
+      totalCost = "$63.21";
+      document.getElementById('employeeCount').innerText = numChildren;
+      document.getElementById('totalCost').innerText = totalCost;
+
+      if(numChildren < 100) {
+        document.getElementById("employeeCount").style.fontSize = "10vw";
+      } else if(numChildren < 1000) {
+        document.getElementById("employeeCount").style.fontSize = "09vw";
+      } else if(numChildren < 10000) {
+        document.getElementById("employeeCount").style.fontSize = "07vw";
+      } else {
+        document.getElementById("employeeCount").style.fontSize = "05vw";
+      }
+      
+      if(totalCost.length < 7) {
+        document.getElementById("totalCost").style.fontSize = "08vw";
+      } else if(totalCost.length < 9) {
+        document.getElementById("totalCost").style.fontSize = "06vw";
+      } else if(totalCost.length < 10) {
+        document.getElementById("totalCost").style.fontSize = "05vw";
+      } else {
+        document.getElementById("totalCost").style.fontSize = "04vw";
+      }
   })
 })
 
