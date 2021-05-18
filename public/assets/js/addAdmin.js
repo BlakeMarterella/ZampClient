@@ -39,6 +39,7 @@ function addEmployee() {
                     var ret = email.replace('.', '');
                     var em = {
                         company: name,
+                        name: firstName
                     };
                     firebase.database().ref("ids").child(ret).set(em).then((snapshot) => {
                         this.console.log("Created");
@@ -49,7 +50,7 @@ function addEmployee() {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                console.log(errorCode + ' - ' + errorMessage);
+                alert(errorMessage)
             });
 
     } else {

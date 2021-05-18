@@ -46,7 +46,7 @@ databaseRefPro.once('value', function (snapshot) {
       id: childKey,
       swagID: childData.id
     }];
-    loadItems(items1);
+   // loadItems(items1);
   })
 })
 
@@ -116,7 +116,6 @@ function DL1(elem) {
         arr.forEach(item => {
           console.log(i);
           if (item == table.rows[r].cells[c].innerHTML){
-            alert("remove: " +  table.rows[r].cells[c].innerHTML)
             arr.splice(i,1);
             table.deleteRow(i);
           }
