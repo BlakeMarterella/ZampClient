@@ -93,17 +93,41 @@ function getID(num) {
           image: item.image
         };
         loadSelectTable(dic)
-        
-        window.alert("item " + item.id)
+
 
       } else {
-//
+        console.log("its in there");
+        DL1(item.id);
       }
       return;
     }
-    i++;
+
   });
   document.getElementById("selected").innerHTML("bruh");
+}
+
+function DL1(elem) {
+  const table = document.getElementById("swag");
+  var i = 0;
+  for (var r = 0, n = table.rows.length; r < n; r++) {
+    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+      if (table.rows[r].cells[c].innerHTML == elem) {
+        var i = 0
+        arr.forEach(item => {
+          console.log(i);
+          if (item == table.rows[r].cells[c].innerHTML){
+            alert("remove: " +  table.rows[r].cells[c].innerHTML)
+            arr.splice(i,1);
+            table.deleteRow(i);
+          }
+          i++;
+        })
+      }
+      else {
+        i++;
+      }
+    }
+  }
 }
 
 function loadSelectTable(s) {
@@ -127,7 +151,7 @@ function save() {
 
   arr.forEach(i => {
     var swag = {
-        id : i
+      id: i
     };
     firebase.database().ref(this.name + "Swag").push(swag);
 
