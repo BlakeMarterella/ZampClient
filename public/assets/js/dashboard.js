@@ -43,54 +43,9 @@ databaseRef.once('value', function (snapshot) {
     
       console.log(snapshot.numChildren()); 
       document.getElementById('employeeCount').innerText = snapshot.numChildren()
+      document.getElementById('totalCost').innerText = '$6,382.34'
   })
 })
-
-
-function initChartist() {
-  var dates = [];
-  let today = new Date();
-
-  for (var i = 0; i < 7; i++){
-    var date = today - i;
-    dates.push(date);
-  }
-
-  var data = {
-    labels: dates,
-    series: [
-      [542, 443, 320, 780, 553, 453, 343]
-    ]
-  };
-
-  var options = {
-      seriesBarDistance: 10,
-      axisX: {
-          showGrid: true
-      },
-      lineSmooth: Chartist.Interpolation.simple({
-        divisor: 2
-      }),
-      height: "245px",
-      showLine: true,
-  };
-  
-
-  var responsiveOptions = [
-    ['screen and (max-width: 640px)', {
-      seriesBarDistance: 5,
-      axisX: {
-        labelInterpolationFnc: function (value) {
-          return value[0];
-        }
-      }
-    }]
-  ];
-
-  Chartist.Line('#chartActivity', data, options, responsiveOptions);
-}
-
-initChartist();
 
 $("#slideshow > div:gt(0)").hide();
 
