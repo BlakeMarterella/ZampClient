@@ -29,10 +29,14 @@ function checker(items){
     console.log(ret);
     if ( ret == item.id) {
     localStorage.setItem("comp", item.comp); 
+    localStorage.setItem("imageUrl", item.imageURL)
+    localStorage.setItem("userName",item.userName)
      window.location.href = "dashboard.html";
      console.log(item.comp);
+     return;
     }
   })
+  return;
 }
 
 function resetPassword(){
@@ -48,7 +52,7 @@ databaseRefPro.once('value',function(snapshot){
         var childKey = childsnapshot.key;
         var childData = childsnapshot.val();
         const items1 = [
-            { id: childKey, comp : childData.company }
+            { id: childKey, comp : childData.company, userName : childData.name, imageURL : childData.url }
         ];
         checker(items1);
     })
