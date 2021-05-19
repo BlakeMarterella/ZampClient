@@ -8,7 +8,7 @@ class Navbar extends HTMLElement {
     connectedCallback() {
       this.innerHTML = `
       <div class="logo">
-          <img src="assets/img/logo.png" alt="..." 
+          <img src="../assets/img/logo.png" alt="..." 
           style="width:50%;
           height:50%; 
           display:block;
@@ -16,7 +16,7 @@ class Navbar extends HTMLElement {
           margin-right: auto;
           width: 50%;">
           <a target="_blank" href="http://www.zampmarketing.com" class="simple-text">
-              Zamp Marketing
+              Zamp Admin
           </a>
       </div>`;
     }
