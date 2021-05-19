@@ -12,7 +12,21 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //firebase.analytics(); //Maybe add that? idk 
-//Makes a ref to the company survey, concatanates the company name + survey to find easily. 
+//Makes a ref to the company survey, concatanates the company name + survey to find easily0
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+  
+      if (user != null) {
+  
+      }
+  
+    } else {
+      // No user is signed in.
+      window.location.href = "index.html";
+    }
+  });
+ 
 var compName = localStorage.getItem("comp");
 var name = compName
 
