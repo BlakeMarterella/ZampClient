@@ -78,12 +78,9 @@
             </nav>
 
             <div style="text-align: center;">
-                <!-- TODO @jmb welcome user by their first name pulled from firebase -->
-                <h2>Welcome, Big Nigga!</h2>
-                <!-- TODO @jmb company image URL from firebase-->
-                <img src="http://farm6.static.flickr.com/5230/5638093881_a791e4f819_m.jpg">
-                <!-- TODO @jmb company name from firebase -->
-                <p class="text-muted">- Duck Software LLC -</p>
+                <h2 id="welcome">Welcome, User!</h2>
+                <img id="image" >
+                <p id="companyn" class="text-muted">- Company Name -</p>
             </div>
 
             </br>
@@ -105,7 +102,7 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Estimated Order Cost</h4>
+                                    <h4 id="estimatedCost"class="title">Estimated Order Cost</h4>
                                     <label id="totalCost" class="shout"></label>
                                 </div>
                             </div>
@@ -116,7 +113,6 @@
                                 <div class="header">
                                     <h4 class="title">Swag Items</h4>
                                 </div>
-                                <!-- TODO @jmb populate this slideshow with maybe 4 images that Jill provides in the Swag Pannel -->
                                 <div id="slideshow">
                                     <div>
                                         <img src="https://images-na.ssl-images-amazon.com/images/I/71Q8GTuTCeL._AC_SL1500_.jpg">
