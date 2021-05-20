@@ -98,6 +98,8 @@ var table = new Tabulator("#employees-table", {
 var compName = localStorage.getItem("comp");
 var name = compName
 var counter = 0
+let alias = localStorage.getItem('alias')
+document.getElementById('compName').innerText = alias
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
