@@ -12,8 +12,10 @@
 }
 
 #slideshow img {
-    width: 20em;
-    height: 20em;
+    width: 80%;
+    height: 80%;
+    max-width: 20em;
+    max-height: 20em;
     padding-top: 1em;
     padding-bottom: 1em;
 }

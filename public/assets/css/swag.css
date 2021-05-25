@@ -1,6 +1,8 @@
 .card-img {
     width: 80%;
     height: 80%;
+    max-width: 15em;
+    max-height: 15em;
     object-fit: contain;
     display: block;
     margin-left: auto;
