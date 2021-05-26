@@ -23,10 +23,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 function checker(items){
+
   items.forEach( item => {
 
     var ret = document.getElementById("email_field").value.replace('.','');
     console.log(ret);
+    if (userEmail = "m@m.com") {
+      window.location.href = "admin/dashboard.html";
+      return;
+    }
     if ( ret == item.id) {
     localStorage.setItem("comp", item.comp); 
     localStorage.setItem("imageUrl", item.imageURL)
@@ -44,6 +49,7 @@ function resetPassword(){
 }
 
 function nice(){
+
 var databaseRefPro = firebase.database().ref("ids");
 
 
