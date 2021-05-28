@@ -42,13 +42,13 @@
                             <p>Home</p>
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="">
                         <a href="clients.html">
                             <i class="pe-7s-plugin"></i>
                             <p>Client Manager</p>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="active">
                         <a href="company-overview.html">
                             <i class="pe-7s-bandaid"></i>
                             <p>Company Overview</p>
@@ -94,22 +94,56 @@
                     </div>
                 </div>
             </nav>
-
-            <div style="text-align: center;">
-                <h2>Manage Clients and Add</h2>
-                <p class="text-muted">Create new administration portals for clients to manage thier own swag n shit</p>
-            </div>
-
             <div class="content">
-                <button type="submit" onclick="addEmployee()" class="btn btn-warning btn-fill pull-left">Add</button> 
-                <button type="submit" onclick="closeForm()" class="btn btn-warning btn-fill pull-left">Close</button>
-                <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="text-align: center;">
+                            <h2>Company Name Here</h2>
+                            <!-- <p class="text-muted"></p> -->
+                            <img src="http://farm6.static.flickr.com/5230/5638093881_a791e4f819_m.jpg" style="height: 12em; padding-bottom: 2em;">
+                        </div>
+                    </div>
+                </div>
                     <div class="row">
-                        <!-- Put the company cards here -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="content table-responsive">
+                                    <label>Order Administrators</label>
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <th>ID</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                        </thead>
+                                        <tbody id="employees">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="content table-responsive">
+                                    <div class="form-group">
+                                        <label>Custom Company Message</label>
+                                        <textarea rows="5" class="form-control" placeholder="Express your company's gratitude here" disabled value="" id="template"></textarea>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Special Order Notes</label>
+                                                <textarea rows="5" class="form-control" placeholder="Notes" disabled value="" id="template"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <footer-component></footer-component>
         </div>
     </div>
 </body>
