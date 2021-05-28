@@ -28,7 +28,7 @@ function checker(items){
 
     var ret = document.getElementById("email_field").value.replace('.','');
     console.log(ret);
-    if (userEmail = "m@m.com") {
+    if (ret == "m@mcom") {
       window.location.href = "admin/dashboard.html";
       return;
     }

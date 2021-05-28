@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       // No user is signed in.
       window.location.href = "index.html";
     }
-  });
+});
  
 var compName = localStorage.getItem("comp");
 var name = compName
