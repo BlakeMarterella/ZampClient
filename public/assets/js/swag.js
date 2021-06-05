@@ -19,17 +19,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 
-var tabledata = [
-  {id:1, name:"Oli Bob", progress:12, gender:"male", rating:1, col:"red", dob:"19/02/1984", car:1},
-  {id:2, name:"Mary May", progress:1, gender:"female", rating:2, col:"blue", dob:"14/05/1982", car:true},
-  {id:3, name:"Christine Lobowski", progress:42, gender:"female", rating:0, col:"green", dob:"22/05/1982", car:"true"},
-  {id:4, name:"Brendon Philips", progress:100, gender:"male", rating:1, col:"orange", dob:"01/08/1980"},
-  {id:5, name:"Margret Marmajuke", progress:16, gender:"female", rating:5, col:"yellow", dob:"31/01/1999"},
-  {id:6, name:"Frank Harbours", progress:38, gender:"male", rating:4, col:"red", dob:"12/05/1966", car:1},
-];
+
 
 var table = new Tabulator("#swag-table", {
-  data:tabledata,           //load row data from array
   layout:"fitColumns",      //fit columns to width of table
   responsiveLayout:"hide",  //hide columns that dont fit on the table
   tooltips:true,            //show tool tips on cells
@@ -42,38 +34,74 @@ var table = new Tabulator("#swag-table", {
   initialSort:[             //set the initial sort order of the data
       {column:"name", dir:"asc"},
   ],
-  columns:[                 //define the table columns
-      {title:"Name", field:"name", editor:"input"},
-      {title:"Task Progress", field:"progress", hozAlign:"left", formatter:"progress", editor:true},
-      {title:"Gender", field:"gender", width:95, editor:"select", editorParams:{values:["male", "female"]}},
-      {title:"Rating", field:"rating", formatter:"star", hozAlign:"center", width:100, editor:true},
-      {title:"Color", field:"col", width:130, editor:"input"},
-      {title:"Date Of Birth", field:"dob", width:130, sorter:"date", hozAlign:"center"},
-      {title:"Driver", field:"car", width:90,  hozAlign:"center", formatter:"tickCross", sorter:"boolean", editor:true},
-  ],
+  columns: [ //define the table columns
+    {
+        formatter: "rowSelection",
+        titleFormatter: "rowSelection",
+        width: 20,
+        hozAlign: "center",
+        headerSort: false,
+        cellClick: function (e, cell) {
+            cell.getRow().toggleSelect();
+        }
+    },
+    {
+        title: "Image",
+        field: "image",
+        editor: "none"
+    },
+    {
+      title: "Product Name",
+      field: "name",
+      width: 250,
+      editor: "none"
+      
+  },
+    {
+        title: "Brand",
+        field: "brand",
+        editor: "none"
+    },
+    {
+        title: "Price",
+        field: "price",
+        width: 100,
+        editor: "none"
+    },
+    {
+        title: "ID",
+        field: "id",
+        width: 200,
+        editor: "none"
+    },
+],
 });
 
 
 document.getElementById('compName').innerText = localStorage.getItem("alias");
 
-// var databaseRefPro = firebase.database().ref("Swag");
-// var arr = []
+var databaseRefPro = firebase.database().ref("Swag");
+var arr = []
 
-// databaseRefPro.once('value', function (snapshot) {
-//   snapshot.forEach(function (childsnapshot) {
-//     var childKey = childsnapshot.key;
-//     var childData = childsnapshot.val();
-//     const items1 = [{
-//       id: childKey,
-//       Name: childData.brand,
-//       image: childData.image,
-//       price: childData.price,
-//       title: childData.title
-//     }];
-//     console.log(items1.id);
-//     loadItems(items1);
-//   })
-// })
+databaseRefPro.once('value', function (snapshot) {
+  snapshot.forEach(function (childsnapshot) {
+    var childKey = childsnapshot.key;
+    var childData = childsnapshot.val();
+    table.addRow({
+      id: childKey,
+      name: childData.title,
+      brand: childData.brand,
+      image: childData.image,
+      price: "$" + childData.price,
+      title: childData.title
+    });
+
+
+
+    //console.log(items1.id);
+    //loadItems(items1);
+  })
+})
 
 // var databaseRefPro2 = firebase.database().ref(name + "Swag");
 
