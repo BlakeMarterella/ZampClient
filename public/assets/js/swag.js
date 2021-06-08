@@ -18,63 +18,63 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-
-
-
 var table = new Tabulator("#swag-table", {
-  layout:"fitColumns",      //fit columns to width of table
-  responsiveLayout:"hide",  //hide columns that dont fit on the table
-  tooltips:true,            //show tool tips on cells
-  addRowPos:"top",          //when adding a new row, add it to the top of the table
-  history:true,             //allow undo and redo actions on the table
-  pagination:"local",       //paginate the data
-  paginationSize:7,         //allow 7 rows per page of data
-  movableColumns:true,      //allow column order to be changed
-  resizableRows:true,       //allow row order to be changed
-  initialSort:[             //set the initial sort order of the data
-      {column:"name", dir:"asc"},
+  layout: "fitColumns", //fit columns to width of table
+  responsiveLayout: "hide", //hide columns that dont fit on the table
+  tooltips: true, //show tool tips on cells
+  addRowPos: "top", //when adding a new row, add it to the top of the table
+  history: true, //allow undo and redo actions on the table
+  pagination: "local", //paginate the data
+  paginationSize: 7, //allow 7 rows per page of data
+  movableColumns: true, //allow column order to be changed
+  resizableRows: true, //allow row order to be changed
+  initialSort: [ //set the initial sort order of the data
+    {
+      column: "name",
+      dir: "asc"
+    },
   ],
   columns: [ //define the table columns
     {
-        formatter: "rowSelection",
-        titleFormatter: "rowSelection",
-        width: 20,
-        hozAlign: "center",
-        headerSort: false,
-        cellClick: function (e, cell) {
-            cell.getRow().toggleSelect();
-        }
+      formatter: "rowSelection",
+      titleFormatter: "rowSelection",
+      width: 20,
+      hozAlign: "center",
+      headerSort: false,
+      cellClick: function (e, cell) {
+        cell.getRow().toggleSelect();
+      }
     },
     {
-        title: "Image",
-        field: "image",
-        editor: "none"
+      title: "Image",
+      field: "image",
+      editor: "none"
     },
     {
       title: "Product Name",
       field: "name",
       width: 250,
       editor: "none"
-      
-  },
-    {
-        title: "Brand",
-        field: "brand",
-        editor: "none"
+
     },
     {
-        title: "Price",
-        field: "price",
-        width: 100,
-        editor: "none"
+      title: "Brand",
+      field: "brand",
+      editor: "none"
     },
     {
-        title: "ID",
-        field: "id",
-        width: 200,
-        editor: "none"
+      title: "Price",
+      field: "price",
+      width: 100,
+      editor: "none"
     },
-],
+    {
+      title: "ID",
+      field: "id",
+      width: 200,
+      editor: "none"
+    },
+  ],
 });
 
 
@@ -102,6 +102,26 @@ databaseRefPro.once('value', function (snapshot) {
     //loadItems(items1);
   })
 })
+
+
+function saveEdits() {
+  // #employees-table
+
+    firebase.database().ref(this.name + "Swag").remove()
+    var id = table.getData();
+    //"-MYIH5ATFAFE9UdTFNgn"
+    var id = table.getSelectedData();
+    var n = 0
+    table.getSelectedRows().forEach(element => {
+      var em = {
+        firstName: id[n].id,
+      };
+      firebase.database().ref(name + 'Swag').push(em);
+      n++;
+    }) 
+    table.deselectRow("visable"); 
+    location.reload()
+}
 
 // var databaseRefPro2 = firebase.database().ref(name + "Swag");
 
@@ -163,7 +183,7 @@ databaseRefPro.once('value', function (snapshot) {
 //   ids.forEach(item => {
 //     if (item.index == num) {
 //       if (!arr.includes(item)) {
-        
+
 //         const dic = {
 //           index: counter,
 //           id: item.id,
@@ -175,7 +195,7 @@ databaseRefPro.once('value', function (snapshot) {
 //         arr.push(dic)
 //         childIDArr.push(item.id)
 //         loadSelectTable(dic)
-        
+
 //       } else {
 //         console.log("its in there");
 //         DL1(item.id);
