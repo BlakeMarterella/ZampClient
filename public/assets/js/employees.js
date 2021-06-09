@@ -233,6 +233,9 @@ function saveEdits() {
             if (id[n].address == "") {
                 id[n].address = "N/A"
             }
+            if (id[n].email == "") {
+                id[n].email = "N/A"
+            }
             var employee = {
 
                 firstName: id[n].firstname,
@@ -251,11 +254,11 @@ function saveEdits() {
             var ret = id[n].email.replace('.', '');
             firebase.database().ref("Employees").child(ret).set(em);
 
+            table.deselectRow(id[n].id);
             n++;
 
         }) 
-        table.deselectRow("visable");
-        location.reload()
+        console.log("saved")
 }
 
 //Open the popup form

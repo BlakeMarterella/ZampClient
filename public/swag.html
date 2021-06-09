@@ -36,9 +36,9 @@
 
     <div class="wrapper">
 
-        <div class="sidebar" data-color="blue">      
+        <div class="sidebar" data-color="blue">
             <div class="sidebar-wrapper">
-                <logo-component></logo-component> 
+                <logo-component></logo-component>
                 <ul class="nav">
                     <li>
                         <a href="dashboard.html">
@@ -47,10 +47,10 @@
                         </a>
                     </li>
                     <li class="active">
-                    <a href="swag.html">
-                        <i class="pe-7s-plugin"></i>
-                        <p>Swag Builder</p>
-                    </a>
+                        <a href="swag.html">
+                            <i class="pe-7s-plugin"></i>
+                            <p>Swag Builder</p>
+                        </a>
                     </li>
                     <li>
                         <a href="employees.html">
@@ -59,10 +59,10 @@
                         </a>
                     </li>
                     <li>
-                    <a href="company.html">
-                        <i class="pe-7s-config"></i>
-                        <p>Company Profile</p>
-                    </a>
+                        <a href="company.html">
+                            <i class="pe-7s-config"></i>
+                            <p>Company Profile</p>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -97,34 +97,28 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="content table-responsive table-full-width">
-                                <div id="swag-table" style="margin-left: 8px; margin-right: 8px;"></div>
+                                <div id="cards" class="row"></div>
                             </div>
                         </div>
-<!-- TODO @mozz format the cards better -->
+                        <!-- TODO @mozz format the cards better -->
                         <div class="col-md-4">
                             <div class="card card-user">
                                 <div class="content">
                                     <!-- TODO @mozz make the save button spicyyyyy-->
                                     <h4 style="text-align:center">Your Personalized Package</h4>
-                                    <p class="text-muted" style="text-align: center;">Select items to the left to begin!</p>
+                                    <p class="text-muted" style="text-align: center;">Select items to the left to begin!
+                                    </p>
                                     <div class="content table-responsive table-full-width">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                                <th>Name</th>
-                                                <th>Brand</th>
-                                                <th>Unit Price</th>
-                                                <th>ID</th>
-                                            </thead>
-                                            <tbody id="swag">
-                                                <!-- data is pulled from firebase -->
-                                            </tbody>
-                                        </table>
+                                        <div id="swag-table" style="margin-left: 8px; margin-right: 8px;"></div>
                                         <div class="pricing" id="pricing">
-                                            <p id="boxPrice" ><b>Price per box: </b></p>
+                                            <p id="boxPrice"><b>Price per box: </b></p>
                                             <hr>
-                                            <p id="totalPrice" class="pull-right"><b>Total Cost of Swag Drog: </b></p>
+                                            <!-- <p id="totalPrice" class="pull-right"><b>Total Cost of Swag Drog: </b></p> -->
                                         </div>
-                                        <button class="btn btn-primary btn-fill btn-round" style="align-items: center;" onclick="saveEdits()">Save </button>
+                                        <button class="btn btn-primary btn-fill btn-round" style="align-items: center;"
+                                            onclick="saveEdits()">Save Adds</button>
+                                        <button class="btn btn-primary btn-fill btn-round pull-right" style="align-items: center;"
+                                            id="delete-row">Delete Selected Items </button>
                                     </div>
                                 </div>
                             </div>

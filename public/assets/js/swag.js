@@ -1,8 +1,6 @@
 var compName = localStorage.getItem("comp");
 var name = compName
 var arr = []
-var trashArr = []
-var childIDArr = []
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -46,34 +44,25 @@ var table = new Tabulator("#swag-table", {
       }
     },
     {
-      title: "Image",
-      field: "image",
+      title: "ID",
+      field: "id",
+      width: 116,
       editor: "none"
     },
     {
       title: "Product Name",
       field: "name",
-      width: 250,
+      width: 200,
       editor: "none"
 
     },
     {
-      title: "Brand",
-      field: "brand",
-      editor: "none"
-    },
-    {
       title: "Price",
       field: "price",
-      width: 100,
+      width: 67,
       editor: "none"
     },
-    {
-      title: "ID",
-      field: "id",
-      width: 200,
-      editor: "none"
-    },
+
   ],
 });
 
@@ -87,252 +76,199 @@ databaseRefPro.once('value', function (snapshot) {
   snapshot.forEach(function (childsnapshot) {
     var childKey = childsnapshot.key;
     var childData = childsnapshot.val();
-    table.addRow({
+
+    const items1 = [{
       id: childKey,
-      name: childData.title,
-      brand: childData.brand,
+      Name: childData.brand,
       image: childData.image,
-      price: "$" + childData.price,
+      price: childData.price,
       title: childData.title
-    });
-
-
-
+    }];
     //console.log(items1.id);
-    //loadItems(items1);
+    loadItems(items1);
   })
 })
 
+var databaseRefPro = firebase.database().ref(name + "Swag");
+var arr = []
+
+databaseRefPro.once('value', function (snapshot) {
+  snapshot.forEach(function (childsnapshot) {
+    var childKey = childsnapshot.key;
+    var childData = childsnapshot.val();
+    arr.push(childKey)
+    table.addRow({
+      id: childKey,
+      name: childData.title,
+      image: childData.image,
+      price:  childData.price,
+      title: childData.title
+    });
+  })
+})
+
+function getID(num) {
+  console.log(num);
+  console.log(ids);
+  var i = 0
+  ids.forEach(item => {
+    if (item.index == num) {
+      if (!arr.includes(item.id)) {
+
+        const dic = {
+          index: counter,
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          title: item.title,
+          image: item.image
+        };
+        arr.push(item.id)
+        loadSelectTable(dic)
+
+      } else {
+        console.log("its in there");
+      }
+      return;
+    }
+
+  });
+}
 
 function saveEdits() {
   // #employees-table
+  //"-MYIH5ATFAFE9UdTFNgn"
+      table.selectRow("visible")
+      var id = table.getSelectedData();
+      var n = 0
+      table.getSelectedRows().forEach(element => {
 
-    firebase.database().ref(this.name + "Swag").remove()
-    var id = table.getData();
-    //"-MYIH5ATFAFE9UdTFNgn"
-    var id = table.getSelectedData();
-    var n = 0
-    table.getSelectedRows().forEach(element => {
-      var em = {
-        firstName: id[n].id,
-      };
-      firebase.database().ref(name + 'Swag').push(em);
-      n++;
-    }) 
-    table.deselectRow("visable"); 
-    location.reload()
+        // table.addRow({
+        //   id: childKey,
+        //   name: childData.title,
+        //   image: childData.image,
+        //   price: "$" + childData.price,
+        //   title: childData.title
+        // });
+          var swag = {
+
+            title: id[n].title,
+            price: id[n].price,
+            id: id[n].id,
+          };
+
+          firebase.database().ref(name + 'Swag').child(id[n].id).set(swag);
+          table.deselectRow(id[n].id);
+          n++;
+      }) 
+    //  location.reload()
 }
 
-// var databaseRefPro2 = firebase.database().ref(name + "Swag");
 
-// databaseRefPro2.once('value', function (snapshot) {
-//   snapshot.forEach(function (childsnapshot) {
-//     var childKey = childsnapshot.key;
-//     var childData = childsnapshot.val();
+var ids = [];
+var counter = 0
 
-//     const dic = {
-//       id: childData.id,
-//       name: childData.name,
-//       price: childData.price,
-//       title: childData.title,
-//       image: childData.image
-//     };
-//     console.log(items1.id);
-//     arr.push(dic);
-//     loadFirebaseTable(items1);
-//   })
-// })
+function loadItems(item) {
+  $.each(item, function (i) {
+    var templateString =
+      '<div class="col-md-4">' +
+      '<div class="card mb-2 box-shadow">' +
+      '<img class="card-img" src=' + item[i].image + ' alt="Card image cap">' +
+      '<div class="content">' +
+      '<h5 class="card-title" id="nice">' + item[i].Name + '</h5> ' +
+      '<p class="card-description" id="cool">' + item[i].id + '</p>' +
+      '<br>' +
+      '<button id="press" class="btn btn-primary card-button" onclick="getID(' + counter + ')">AddProduct</button>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
 
-// var ids = [];
-// var counter = 0
+    $('#cards').append(templateString);
+    const dic = {
+      index: counter,
+      id: item[i].id,
+      name: item[i].Name,
+      price: item[i].price,
+      title: item[i].title,
+      image: item[i].image
+    };
+    ids.push(dic)
 
-// function loadItems(item) {
-//   $.each(item, function (i) {
-//     var templateString =
-//       '<div class="col-md-4">' +
-//       '<div class="card mb-2 box-shadow">' +
-//       '<img class="card-img" src=' + item[i].image + ' alt="Card image cap">' +
-//       '<div class="content">' +
-//       '<h5 class="card-title" id="nice">' + item[i].Name + '</h5> ' +
-//       '<p class="card-description" id="cool">' + item[i].id + '</p>' +
-//       '<br>' +
-//       '<button id="press" class="btn btn-primary card-button" onclick="getID(' + counter + ')">Add/Remove Product</button>' +
-//       '</div>' +
-//       '</div>' +
-//       '</div>';
+    counter++;
+  })
+}
 
-//     $('#cards').append(templateString);
-//     const dic = {
-//       index: counter,
-//       id: item[i].id,
-//       name: item[i].Name,
-//       price: item[i].price,
-//       title: item[i].title,
-//       image: item[i].image
-//     };
-//     ids.push(dic)
+// 
+function loadSelectTable(s) {
 
-//     counter++;
-//   })
-// }
+  table.addRow({
+    id: s.id,
+    name: s.title,
+    brand: s.brand,
+    price:  "$" + s.price,
+    title: s.title
+  });
 
-// function getID(num) {
-//   console.log(num);
-//   console.log(ids);
-//   var i = 0
-//   ids.forEach(item => {
-//     if (item.index == num) {
-//       if (!arr.includes(item)) {
+}
 
-//         const dic = {
-//           index: counter,
-//           id: item.id,
-//           name: item.name,
-//           price: item.price,
-//           title: item.title,
-//           image: item.image
-//         };
-//         arr.push(dic)
-//         childIDArr.push(item.id)
-//         loadSelectTable(dic)
 
-//       } else {
-//         console.log("its in there");
-//         DL1(item.id);
-//       }
-//       return;
-//     }
+//remove selected swag
+document.getElementById("delete-row").addEventListener("click", function () {
 
-//   });
-// }
+  var id = table.getSelectedData();
+  var counter = 0
+  var counter2 = 0
+  table.getSelectedRows().forEach(element => {
 
-// function DL1(elem) {
-//   const table = document.getElementById("swag");
-//   var i = 0;
-//   for (var r = 0, n = table.rows.length; r < n; r++) {
-//     for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-//       if (table.rows[r].cells[c].innerHTML == elem) {
-//         var i = 0
-//         arr.forEach(item => {
-//           if (item.id == table.rows[r].cells[c].innerHTML) {
-//             console.log(arr.splice(i, 1));
-//             arr.splice(i, 1);
-//             table.deleteRow(i);
-//           }
-//           i++;
-//         })
-//       } else {
-//         i++;
-//       }
-//     }
-//   }
+      // arr.forEach(nice =>{
+      //   if (arr[counter2] == id[counter].id) {
+      //     console.log("removed");
+      //     arr.splice(counter2,1);
+      //   }
+      //   counter2++;
+      // })
 
-// }
+      firebase.database().ref(name + 'Swag').child(id[counter].id).remove();
+      table.deleteRow(element);
+      counter++;
+  });
+  location.reload()
+});
 
-// function loadSelectTable(s) {
-//   const table = document.getElementById("swag");
 
-//   let row = table.insertRow();
-//   let name = row.insertCell(0);
-//   let brand = row.insertCell(1);
-//   let unitPrice = row.insertCell(2);
-//   let id = row.insertCell(3);
-//   id.innerHTML = s.id;
-//   name.innerHTML = s.title;
-//   brand.innerHTML = s.name;
-//   unitPrice.innerHTML = s.price
-
-// }
-
-// function loadFirebaseTable(s) {
-//   $.each(s, function (i) {
-//     const table = document.getElementById("swag");
-
-//     let row = table.insertRow();
-//     let name = row.insertCell(0);
-//     let brand = row.insertCell(1);
-//     let unitPrice = row.insertCell(2);
-//     let id = row.insertCell(3);
-
-//     id.innerHTML = s[i].id;
-//     name.innerHTML = s[i].title;
-//     brand.innerHTML = s[i].name;
-//     unitPrice.innerHTML = s[i].price
-//   })
-// }
-
-// function save() {
-//   firebase.database().ref(this.name + "Swag").remove().then(
-//     arr.forEach(element => {
-//       var swag = {
-//         id: element
-//       };
-//       firebase.database().ref(this.name + "Swag").push(swag);
-//     }),
-//     location.reload()
-//   );
-
-// }
-
-// function save2() {
-//   var cool = 0
-//   var nib = 0
-//   console.log(childIDArr);
-//   arr.forEach(i => {
-
-//     if (childIDArr.length > 0) {
-//       childIDArr.forEach(item2 => {
-
-//         if (i != item2[0].id) {
-//           var swag = {
-//             id: i
-//           };
-
-//           console.log("childID: " + item2[0].id + " arr " + i)
-//           firebase.database().ref(this.name + "Swag").push(swag);
-//         } else {
-//         }
-//         nib++;
-//       })
-//       childIDArr.splice(0, 1)
-//       save()
-//       return
-//     } else {
-//       var swag = {
-//         id: i
-//       };
-//       firebase.database().ref(this.name + "Swag").push(swag);
-//     }
-//     cool++;
-//   })
-
-//   var i = 0
-//   var n = 0
-
-//   trashArr.forEach(item => {
-//     childIDArr.forEach(item2 => {
-//       console.log("loop");
-//       console.log("trash childID: " + item2[n].id + " arr " + trashArr[i])
-
-//       if (trashArr[i] == item2[n].id) {
-//         firebase.database().ref(this.name + "Swag").child(item2[n].Childid).remove();
-//         console.log("removed");
-//       }
-//       n++;
-//     })
-//     i++;
-//   }) //need to figure out how to add things 
-//   return
-//   //need to make an implentation that removes the conent from the database
-// }
+//If the array is empty and there arent any
+// products, hide the pricing info card
+if (ids.length < 1) {
+  // document.getElementById("pricing").style.display = "none";
+  document.getElementById("pricing").style.display = "block";
+} else {
+  document.getElementById("pricing").style.display = "block";
+}
 
 
 
-// //If the array is empty and there arent any
-// // products, hide the pricing info card
-// if (ids.length < 1) {
-//   // document.getElementById("pricing").style.display = "none";
-//   document.getElementById("pricing").style.display = "block";
-// } else {
-//   document.getElementById("pricing").style.display = "block";
-// }
+//code that would seem important later
+
+//function DL1(elem) {
+  //   const table = document.getElementById("swag");
+  //   var i = 0;
+  //   for (var r = 0, n = table.rows.length; r < n; r++) {
+  //     for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+  //       if (table.rows[r].cells[c].innerHTML == elem) {
+  //         var i = 0
+  //         arr.forEach(item => {
+  //           if (item.id == table.rows[r].cells[c].innerHTML) {
+  //             console.log(arr.splice(i, 1));
+  //             arr.splice(i, 1);
+  //             table.deleteRow(i);
+  //           }
+  //           i++;
+  //         })
+  //       } else {
+  //         i++;
+  //       }
+  //     }
+  //   }
+  
+  // }
+  
