@@ -1,6 +1,8 @@
 var compName = localStorage.getItem("comp");
 var name = compName
 var arr = []
+var pricePerBox = 0.0;
+
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -62,7 +64,6 @@ var table = new Tabulator("#swag-table", {
       width: 67,
       editor: "none"
     },
-
   ],
 });
 
@@ -104,6 +105,9 @@ databaseRefPro.once('value', function (snapshot) {
       price:  childData.price,
       title: childData.title
     });
+    var price = parseFloat(childData.price.replace('$',''));
+    pricePerBox = pricePerBox + price
+     document.getElementById('boxPrice').innerText = "Price Per Box: $" + Math.round(100*pricePerBox)/100
   })
 })
 
@@ -161,6 +165,11 @@ function saveEdits() {
           table.deselectRow(id[n].id);
           n++;
       }) 
+      var swag = {
+        costOfOrder: Math.round(100*pricePerBox)/100
+      };
+    
+      firebase.database().ref(name).child("randomID0").update(swag);
     //  location.reload()
 }
 
@@ -201,6 +210,7 @@ function loadItems(item) {
 // 
 function loadSelectTable(s) {
 
+  var id = table.getData();
   table.addRow({
     id: s.id,
     name: s.title,
@@ -209,6 +219,10 @@ function loadSelectTable(s) {
     title: s.title
   });
 
+  var price = parseFloat(s.price);
+  pricePerBox = pricePerBox + price
+  document.getElementById('boxPrice').innerText = "Price Per Box: $" + Math.round(100*pricePerBox)/100
+  //boxPrice
 }
 
 
@@ -220,19 +234,26 @@ document.getElementById("delete-row").addEventListener("click", function () {
   var counter2 = 0
   table.getSelectedRows().forEach(element => {
 
-      // arr.forEach(nice =>{
-      //   if (arr[counter2] == id[counter].id) {
-      //     console.log("removed");
-      //     arr.splice(counter2,1);
-      //   }
-      //   counter2++;
-      // })
+      const index = arr.indexOf(id[counter].id);
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+      
+    var price = parseFloat(id[counter].price.replace('$',''));
+    console.log(id[counter].price);
+    pricePerBox = pricePerBox - price
+    document.getElementById('boxPrice').innerText = "Price Per Box: $" + Math.round(100*pricePerBox)/100
 
       firebase.database().ref(name + 'Swag').child(id[counter].id).remove();
       table.deleteRow(element);
       counter++;
   });
-  location.reload()
+
+  var swag = {
+    costOfOrder: Math.round(100*pricePerBox)/100
+  };
+
+  firebase.database().ref(name).child("randomID0").update(swag);
 });
 
 

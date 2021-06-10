@@ -18,6 +18,7 @@ var imageURL = localStorage.getItem("imageUrl");
 var name = compName
 var userName2 = userName
 var databaseRefPro = firebase.database().ref(name);
+var cost = 0.0
 
 databaseRefPro.once('value', function (snapshot) {
   snapshot.forEach(function (childsnapshot) {
@@ -52,18 +53,7 @@ function loadProfile(items) {
 
 function loadCost(items) {
   items.forEach(item => {
-
-
-    document.getElementById('totalCost').innerText = item.cost
-    if (totalCost.length < 7) {
-      document.getElementById("totalCost").style.fontSize = "08vw";
-    } else if (totalCost.length < 9) {
-      document.getElementById("totalCost").style.fontSize = "06vw";
-    } else if (totalCost.length < 10) {
-      document.getElementById("totalCost").style.fontSize = "05vw";
-    } else {
-      document.getElementById("totalCost").style.fontSize = "04vw";
-    }
+      cost = item.cost
   })
 }
 
@@ -104,6 +94,21 @@ databaseRef.once('value', function (snapshot) {
       document.getElementById("employeeCount").style.fontSize = "05vw";
     }
   })
+  console.log(cost);
+  var price = parseFloat(cost);
+
+  document.getElementById('totalCost').innerText = numChildren * Math.round(100*price)/100
+
+  if (totalCost.length < 7) {
+    document.getElementById("totalCost").style.fontSize = "08vw";
+  } else if (totalCost.length < 9) {
+    document.getElementById("totalCost").style.fontSize = "05vw";
+  } else if (totalCost.length < 10) {
+    document.getElementById("totalCost").style.fontSize = "05vw";
+  } else {
+    document.getElementById("totalCost").style.fontSize = "04vw";
+  }
+
 })
 
 $("#slideshow > div:gt(0)").hide();
