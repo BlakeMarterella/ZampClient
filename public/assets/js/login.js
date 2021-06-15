@@ -11,10 +11,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
 
-
-
     }
-
   } else {
     // No user is signed in.
     document.getElementById("user_div").style.display = "none";
@@ -28,7 +25,7 @@ function checker(items){
 
     var ret = document.getElementById("email_field").value.replace('.','');
     console.log(ret);
-    if (ret == "m@mcom") {
+    if (ret == "m@mcom" || ret == "admin@admincom") {
       window.location.href = "admin/dashboard.html";
       return;
     }

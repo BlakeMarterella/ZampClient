@@ -68,7 +68,8 @@ var table = new Tabulator("#swag-table", {
 });
 
 
-document.getElementById('compName').innerText = localStorage.getItem("alias");
+let alias = localStorage.getItem('alias')
+document.getElementById('compName').innerText = alias
 
 var databaseRefPro = firebase.database().ref("Swag");
 var arr = []
