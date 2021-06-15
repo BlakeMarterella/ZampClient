@@ -26,6 +26,8 @@
     height: 24em;
 }
 
-img {   
+img {
+    width: 12em;
+    height: auto;   
     padding-bottom: 1em;
 }

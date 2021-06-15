@@ -45,7 +45,8 @@ function loadProfile(items) {
     document.getElementById('compName').innerText = item.alias
     document.getElementById('companyn').innerText = "- " + item.alias + " -"
     document.getElementById('welcome').innerText = "Welcome, " + item.userName
-    document.getElementById('image').src = item.imageurl
+    // document.getElementById('image').src = item.imageurl
+    document.getElementById('image').src = 'https://pbs.twimg.com/media/CJMEyJtWUAE_JpG.jpg'
     localStorage.setItem("alias", item.alias);
 
   });
