@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="main-panel" onclick="closeForm()">
+        <div class="main-panel">
             <nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse">
@@ -112,23 +112,25 @@
 <script src="assets/components/logo.js" type="text/javascript" defer></script>
 <script src="assets/components/footer.js" type="text/javascript" defer></script>
 
-
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var firebaseConfig = {
-        apiKey: "AIzaSyCl7crXlHPqniJeASl4T1KJEuItdRpv64E",
-        authDomain: "projecto-ae74c.firebaseapp.com",
-        databaseURL: "https://projecto-ae74c-default-rtdb.firebaseio.com",
-        projectId: "projecto-ae74c",
-        storageBucket: "projecto-ae74c.appspot.com",
-        messagingSenderId: "319216252694",
-        appId: "1:319216252694:web:98ab696c38c532d78e4237",
-        measurementId: "G-3YYJK8B644"
-    };
-    firebase.initializeApp(firebaseConfig);
-</script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/swag.js"></script>
+<!-- <script src="assets/js/swag.js"></script> -->
+<script>
+     var templateString =
+        '<div class="col-md-4">' +
+          '<div class="card mb-2 box-shadow">' +
+            '<img class="card-img" src=' + 'image-url-here' + ' alt="Card image cap">' +
+            '<div class="content">' +
+              '<h5 class="card-title">' + 'My Name Here' + '</h5> ' +
+              '<p class="card-description">' + 'My id Here' + '</p>' +
+              '<br>' +
+              '<button class="btn btn-primary card-button">Edit</button>' +
+              '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+       $('#cards').append(templateString);
+</script>
 
 </html>
