@@ -187,34 +187,17 @@
                 </div>
             </nav>
 
-            <div style="text-align: center;">
-                <h2>Manage Swag</h2>
-                <p class="text-muted">Post items, track inventory, and monitor what swag items are accessible by clients</p>
-            </div>
-
             <div class="content">
+                <div style="text-align: center;">
+                    <h2>Manage Swag</h2>
+                    <p class="text-muted">Post items, track inventory, and monitor what swag items are accessible by clients</p>
+                    <button class="btn btn-primary pull-right" id="download-csv">Add Swag</button>
+                </div>    
                 <div class="container-fluid">
                     <div class="row">
-
                         <div class="col-md-12">
-
-                            <div class="card">
-                                <!-- Allow the user to click the button to open the form (without auto shutting it lol) -->
-                                <div class="header" onclick="event.stopPropagation()">
-                                    <h4 class="title">Employees</h4>
-                                    <p class="category">Manage those who are getting swag.</p>
-                                    </br>
-                                    <button class="btn btn-primary btn-fill" id="add-row" onclick="openForm()">Add
-                                        Employee</button>
-                                    <button class="btn btn-primary btn-fill" id="add-row" onclick="saveEdits()">Save Edits</button>
-                                    <button class="btn btn-primary" id="delete-row">Delete Selected Rows</button>
-                                    <button class="btn btn-primary pull-right" id="download-csv">Download CSV</button>
-                                    <button class="btn btn-primary pull-right" id="download-xlsx"
-                                        style="margin-right: 3px;">Download XLSX</button>
-                                </div>
-                                <div class="content table-responsive table-full-width">
-                                    <div id="employees-table" style="margin-left: 8px; margin-right: 8px;"></div>
-                                </div>
+                            <div class="content table-responsive table-full-width">
+                                <div id="cards" class="row"></div>
                             </div>
                         </div>
                     </div>
@@ -254,4 +237,5 @@
     firebase.initializeApp(firebaseConfig);
 </script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/swag.js"></script>
 </html>
