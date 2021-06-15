@@ -27,21 +27,21 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 
-  var templateString =
- '<div class="col-md-4">' +
- '<div class="card mb-2 box-shadow">' +
- '<img class="card-img" src=' + 'image-url-here'+ ' alt="Card image cap">' +
- '<div class="content">' +
- '<h5 class="card-title">' + 'This is my name' + '</h5> ' +
- '<p class="card-description">' + 'This is my id' + '</p>' +
- '<p class="card-description">' + 'This is how much stock I have left' + '</p>' +
- '<br>' +
- '<button class="btn btn-primary card-button">Edit</button>' +
- '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
- '</div>' +
- '</div>' +
- '</div>';
- $("#cards").append(templateString); 
+//   var templateString =
+//  '<div class="col-md-4">' +
+//  '<div class="card mb-2 box-shadow">' +
+//  '<img class="card-img" src=' + 'image-url-here'+ ' alt="Card image cap">' +
+//  '<div class="content">' +
+//  '<h5 class="card-title">' + 'This is my name' + '</h5> ' +
+//  '<p class="card-description">' + 'This is my id' + '</p>' +
+//  '<p class="card-description">' + 'This is how much stock I have left' + '</p>' +
+//  '<br>' +
+//  '<button class="btn btn-primary card-button">Edit</button>' +
+//  '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
+//  '</div>' +
+//  '</div>' +
+//  '</div>';
+//  $("#cards").append(templateString); 
 
 var databaseRefPro = firebase.database().ref("Swag");
 var arr = []
@@ -64,24 +64,26 @@ databaseRefPro.once('value', function (snapshot) {
 })
 
 var ids = [];
-var counter = 0
+var counter = 0;
+
 function loadItems(item) {
     $.each(item, function (i) {
         var templateString =
         '<div class="col-md-4">' +
-        '<div class="card mb-2 box-shadow">' +
-        '<img class="card-img" src=' + 'image-url-here'+ ' alt="Card image cap">' +
-        '<div class="content">' +
-        '<h5 class="card-title">' + 'This is my name' + '</h5> ' +
-        '<p class="card-description">' + 'This is my id' + '</p>' +
-        '<p class="card-description">' + 'This is how much stock I have left' + '</p>' +
-        '<br>' +
-        '<button class="btn btn-primary card-button">Edit</button>' +
-        '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
-        '</div>' +
-        '</div>' +
+          '<div class="card mb-2 box-shadow">' +
+            '<img class="card-img" src=' + item[i].image + ' alt="Card image cap">' +
+            '<div class="content">' +
+              '<h5 class="card-title">' + item[i].Name + '</h5> ' +
+              '<p class="card-description">' + item[i].id + '</p>' +
+              '<br>' +
+              '<button class="btn btn-primary card-button">Edit</button>' +
+              '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
+            '</div>' +
+          '</div>' +
         '</div>';
-       $("#cards").append(templateString); 
+
+       $('#cards').append(templateString);
+
       const dic = {
         index: counter,
         id: item[i].id,
