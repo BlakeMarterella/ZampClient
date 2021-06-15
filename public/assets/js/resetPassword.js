@@ -13,9 +13,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 //firebase.analytics(); //Maybe add that? idk 
 //Makes a ref to the company survey, concatanates the company name + survey to find easily. 
-var compName = localStorage.getItem("comp");
 var name = compName
-
+document.getElementById("login_div").style.display = "block";
 
 
 function resetPassword(){
