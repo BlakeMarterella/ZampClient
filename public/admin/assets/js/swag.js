@@ -82,7 +82,7 @@ function loadItems(item) {
           '</div>' +
         '</div>';
 
-       $('#cards').append(templateString);
+       ('#cards').append(templateString);
 
       const dic = {
         index: counter,
@@ -95,8 +95,5 @@ function loadItems(item) {
       ids.push(dic)
   
       counter++;
-    })
-  }
-
-
-
+  })
+}
