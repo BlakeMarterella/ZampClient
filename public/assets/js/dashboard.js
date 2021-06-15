@@ -83,32 +83,11 @@ databaseRef.once('value', function (snapshot) {
     console.log(snapshot.numChildren());
     numChildren = snapshot.numChildren();
     document.getElementById('employeeCount').innerText = numChildren;
-
-    if (numChildren < 100) {
-      document.getElementById("employeeCount").style.fontSize = "10vw";
-    } else if (numChildren < 1000) {
-      document.getElementById("employeeCount").style.fontSize = "09vw";
-    } else if (numChildren < 10000) {
-      document.getElementById("employeeCount").style.fontSize = "07vw";
-    } else {
-      document.getElementById("employeeCount").style.fontSize = "05vw";
-    }
   })
   console.log(cost);
   var price = parseFloat(cost);
 
-  document.getElementById('totalCost').innerText = numChildren * Math.round(100*price)/100
-
-  if (totalCost.length < 7) {
-    document.getElementById("totalCost").style.fontSize = "08vw";
-  } else if (totalCost.length < 9) {
-    document.getElementById("totalCost").style.fontSize = "05vw";
-  } else if (totalCost.length < 10) {
-    document.getElementById("totalCost").style.fontSize = "05vw";
-  } else {
-    document.getElementById("totalCost").style.fontSize = "04vw";
-  }
-
+  document.getElementById('totalCost').innerText = '$' + numChildren * Math.round(100*price)/100
 })
 
 $("#slideshow > div:gt(0)").hide();
