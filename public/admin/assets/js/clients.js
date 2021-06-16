@@ -13,7 +13,7 @@ var templateString =
     '<div class="content">' +
       '<h5 class="card-title">' + 'Company Name Here' + '</h5> ' +
       '<br>' +
-      '<button class="btn btn-primary card-button">Edit</button>' +
+      '<button class="btn btn-primary card-button">More Info</button>' +
       '<button class="btn btn-fill btn-danger card-button pull-right">Delete</button>' +
     '</div>' +
   '</div>' +
