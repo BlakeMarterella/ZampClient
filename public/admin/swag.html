@@ -39,102 +39,7 @@
 </head>
 
 <body>
-    <!---------------------------------------------------->
-    <div class="col-md-8" id="popupForm" style="
-            position: relative;
-            text-align: center;
-            width: 80%;
-            display: none;
-            position: fixed;
-            left: 50%;  
-            top: 5%;
-            transform: translate(-50%, 5%);
-            z-index: 9;"
-            onclick="event.stopPropagation()">
-        <div class="card" style="border: 2px solid gray;" id="form-card">
-            <div class="header">
-                <h4 class="title">Add Employee</h4>
-            </div>
-            <div class="content">
-                <form>
-                    <!-- Values for each row must add up to be 12 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>First Name</label>
-                                <input id="firstname" type="text" class="form-control" placeholder="first name"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                <input id="lastname" type="text" class="form-control" placeholder="last name" required>
-                            </div>
-                        </div>
-                    </div>
-                    <!---------------------------------------------------->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Street Address</label>
-                                <input id="street" type="text" class="form-control" placeholder="123 Sesame Street">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>City</label>
-                                <input id="city" type="text" class="form-control" placeholder="Bristow">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>State</label>
-                                <input id="state" type="text" class="form-control" placeholder="Virginia">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Country</label>
-                                <input id="country" type="text" class="form-control" placeholder="United States">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!---------------------------------------------------->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input id="email" type="text" class="form-control" placeholder="generic@gmail.com"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Priority</label>
-                                <select class="form-control" id="priority" required>
-                                    <option disabled selected>Select Priority</option>
-                                    <option value="high">High</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="low">Low</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                        <button type="submit" onclick="addEmployee()" class="btn btn-primary btn-fill pull-right">Add</button>
-                       <button type="submit" onclick="closeForm()" class="btn btn-primary btn-fill pull-left">Close</button>
-                    <div class="clearfix"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!---------------------------------------------------->
-
     <div class="wrapper" id="wrapper">
-        
         <div class="sidebar" data-color="orange">
             <div class="sidebar-wrapper">
                 <logo-component></logo-component>
@@ -168,7 +73,7 @@
             </div>
         </div>
 
-        <div class="main-panel" onclick="closeForm()">
+        <div class="main-panel">
             <nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse">
