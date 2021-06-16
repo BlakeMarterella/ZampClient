@@ -95,28 +95,29 @@
                                 <div class="info"></div>
                             </div>
                             <br>
-                            <input class="image-url" placeholder="Enter image URL here" value= "">
+                            <input class="image-url" placeholder="Enter image URL here" value= "" id="image">
                         </div>
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="content table-responsive">
                                     <div class="form-group">
                                         <label>Swag Title</label>
-                                        <textarea rows="1" class="form-control" placeholder="Express your company's gratitude here" disabled value="" id="template"></textarea>
+                                        <textarea rows="1" class="form-control" placeholder="i.e T-Shirt"  value="" id="title" ></textarea>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea rows="2" class="form-control" placeholder="Notes" disabled value="" id="template"></textarea>
+                                                <label>Brand</label>
+                                                <textarea rows="2" class="form-control" placeholder="i.e Nike"  value="" id="brand" ></textarea>
                                          </div>
                                          <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Price</label>
-                                                    <textarea rows="1" class="form-control" placeholder="Notes" disabled value="" id="template"></textarea>
+                                                    <textarea rows="1" class="form-control" placeholder="only numbers. i.e 6.99"  value="" id="price" ></textarea>
                                              </div>
+                                             <button onclick="addSwag()" class="btn btn-info btn-fill pull-left">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -154,6 +155,7 @@
     firebase.initializeApp(firebaseConfig);
 </script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/addSwag.js"></script>
 <script src="../assets/js/imgur.js"></script>
 <script src="../assets/js/upload.js"></script>
 </html>

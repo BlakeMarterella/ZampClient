@@ -1,4 +1,18 @@
 
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+  
+      if (user != null) {
+  
+      }
+  
+    } else {
+      // No user is signed in.
+      window.location.href = "index.html";
+    }
+});
+
 var table = new Tabulator("#orders-table", {
     layout: "fitColumns", //fit columns to width of table
     responsiveLayout: "hide", //hide columns that dont fit on the table
