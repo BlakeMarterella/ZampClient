@@ -37,6 +37,7 @@ databaseRefPro.once('value', function (snapshot) {
   })
 })
 
+var user;
 
 function loadProfile(items) {
   console.log(name);
@@ -44,13 +45,24 @@ function loadProfile(items) {
   items.forEach(item => {
     document.getElementById('compName').innerText = item.alias
     document.getElementById('companyn').innerText = "- " + item.alias + " -"
-    document.getElementById('welcome').innerText = "Welcome, " + item.userName
-     document.getElementById('image').src = item.imageurl
-    //document.getElementById('image').src = 'https://pbs.twimg.com/media/CJMEyJtWUAE_JpG.jpg'
+    user = item.userName
+    document.getElementById('image').src = item.imageurl
     localStorage.setItem("alias", item.alias);
 
   });
 }
+
+var welcome = document.getElementById('welcome-msg');
+welcome.innerHTML = "Welcome";  
+var curTime = new Date().getHours();
+if (curTime > 0 && curTime < 12) {
+   welcome.innerHTML = "Good Morning";  
+} else if (curTime < 16) {
+  welcome.innerHTML = "Good Afternoon";  
+} else {
+  welcome.innerHTML = "Good Evening";  
+}
+welcome.append(", " + user);
 
 function loadCost(items) {
   items.forEach(item => {
