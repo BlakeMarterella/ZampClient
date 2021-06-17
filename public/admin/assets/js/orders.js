@@ -41,6 +41,11 @@ var table = new Tabulator("#orders-table", {
             }
         },
         {
+            title: "Company",
+            field: "company",
+            editor: "input"
+        },
+        {
             title: "First Name",
             field: "firstname",
             editor: "input"
@@ -82,11 +87,9 @@ var table = new Tabulator("#orders-table", {
             field: "shipping",
             editor: "input"
         },
-        {
-            title: "ID",
-            field: "ID",
-            width: 200,
-            editor: "none"
-        },
     ],
 });
+
+function printMe() {
+    node.textContent = "Some error message";
+}
