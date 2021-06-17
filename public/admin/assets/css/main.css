@@ -14,3 +14,24 @@
         position: initial;
     }
 }
+
+img {
+    width: 12em;
+    height: auto;   
+    padding-bottom: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.cards {
+    margin-top: 2em;
+}
+
+h4 {
+    text-align: center;
+}
