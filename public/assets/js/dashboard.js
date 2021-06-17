@@ -40,8 +40,6 @@ databaseRefPro.once('value', function (snapshot) {
 var user;
 
 function loadProfile(items) {
-  console.log(name);
-
   items.forEach(item => {
     document.getElementById('compName').innerText = item.alias
     document.getElementById('companyn').innerText = "- " + item.alias + " -"
@@ -62,7 +60,7 @@ if (curTime > 0 && curTime < 12) {
 } else {
   welcome.innerHTML = "Good Evening";  
 }
-welcome.append(", " + user);
+welcome.append(", " + userName);
 
 function loadCost(items) {
   items.forEach(item => {
@@ -93,11 +91,9 @@ var databaseRef = firebase.database().ref(name + "Employees");
 databaseRef.once('value', function (snapshot) {
   snapshot.forEach(function (childsnapshot) {
 
-    console.log(snapshot.numChildren());
     numChildren = snapshot.numChildren();
     document.getElementById('employeeCount').innerText = numChildren;
   })
-  console.log(cost);
   var price = parseFloat(cost);
 
   document.getElementById('totalCost').innerText = '$' + numChildren * Math.round(100*price)/100
