@@ -12,6 +12,17 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   });
 
+  numOfClients
+
+  var databaseRef = firebase.database().ref("Companies");
+databaseRef.once('value', function (snapshot) {
+  snapshot.forEach(function (childsnapshot) {
+
+    numChildren = snapshot.numChildren();
+    document.getElementById('numOfClients').innerText = numChildren;
+  })
+})
+
 var welcome = document.getElementById('welcome-msg');
 welcome.innerHTML = "Welcome";  
 var curTime = new Date().getHours();
