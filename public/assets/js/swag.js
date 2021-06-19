@@ -101,7 +101,7 @@ databaseRefPro.once('value', function (snapshot) {
     arr.push(childKey)
     table.addRow({
       id: childKey,
-      name: childData.title,
+      name: childData.brand,
       image: childData.image,
       price:  childData.price,
       title: childData.title

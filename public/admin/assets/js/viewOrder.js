@@ -86,6 +86,59 @@ var table = new Tabulator("#orders-table", {
     },
 });
 
+//swag type
+var table2 = new Tabulator("#swag-table", {
+    layout: "fitColumns", //fit columns to width of table
+    responsiveLayout: "hide", //hide columns that dont fit on the table
+    tooltips: true, //show tool tips on cells
+    addRowPos: "top", //when adding a new row, add it to the top of the table
+    history: true, //allow undo and redo actions on the table
+    pagination: "local", //paginate the data
+    paginationSize: 7, //allow 7 rows per page of data
+    movableColumns: true, //allow column order to be changed
+    resizableRows: true, //allow row order to be changed
+    initialSort: [ //set the initial sort order of the data
+      {
+        column: "name",
+        dir: "asc"
+      },
+    ],
+    columns: [ //define the table columns
+      {
+        formatter: "rowSelection",
+        titleFormatter: "rowSelection",
+        width: 20,
+        hozAlign: "center",
+        headerSort: false,
+        cellClick: function (e, cell) {
+          cell.getRow().toggleSelect();
+        }
+      },
+      {
+        title: "ID",
+        field: "id",
+        editor: "none"
+      },
+      {
+        title: "Product Name",
+        field: "name",
+        editor: "none"
+  
+      },
+      {
+        title: "Price",
+        field: "price",
+        editor: "none"
+      },
+    //   {
+    //     title: "Brand",
+    //     field: "brand",
+    //     editor: "none"
+    //   },
+    ],
+  });
+  
+
 var counter = 0
 //loads darta from firebase
 var databaseRef = firebase.database().ref(compName + 'Employees');
@@ -116,7 +169,24 @@ databaseRef.once('value', function (snapshot) {
     })
 })
 
+var databaseRefPro = firebase.database().ref(name + "Swag");
+var arr = []
 
+databaseRefPro.once('value', function (snapshot) {
+  snapshot.forEach(function (childsnapshot) {
+    var childKey = childsnapshot.key;
+    var childData = childsnapshot.val();
+    arr.push(childKey)
+    table2.addRow({
+      id: childKey,
+      brand: childData.brand,
+      image: childData.image,
+      price:  childData.price,
+      name: childData.title
+    });
+ 
+  })
+})
 
 
 
