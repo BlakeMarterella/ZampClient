@@ -1,18 +1,10 @@
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-  
-      if (user != null) {
-  
-      }
-  
-    } else {
-      // No user is signed in.
-      window.location.href = "index.html";
-    }
-  });
 
-var table = new Tabulator("#employees-table", {
+//grabs current compamy name
+var compName = localStorage.getItem("cName");
+document.getElementById('viewOrder').innerHTML = "Viewing Orders for " + compName
+
+//creates tables to display users 
+var table = new Tabulator("#orders-table", {
     layout: "fitColumns", //fit columns to width of table
     responsiveLayout: "hide", //hide columns that dont fit on the table
     tooltips: true, //show tool tips on cells
@@ -94,30 +86,9 @@ var table = new Tabulator("#employees-table", {
     },
 });
 
-
-var compName = localStorage.getItem("comp");
-var name = compName
 var counter = 0
-let alias = localStorage.getItem('alias')
-document.getElementById('compName').innerText = alias
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        // User is signed in.
-
-        if (user != null) {
-
-        }
-
-    } else {
-        // No user is signed in.
-        window.location.href = "index.html";
-    }
-});
-
-
-//pulls and references the database to grab data
-var databaseRef = firebase.database().ref(name + 'Employees');
+//loads darta from firebase
+var databaseRef = firebase.database().ref(compName + 'Employees');
 
 databaseRef.once('value', function (snapshot) {
     snapshot.forEach(function (childsnapshot) {
@@ -147,56 +118,9 @@ databaseRef.once('value', function (snapshot) {
 
 
 
-function addEmployee() {
-
-    let firstName = document.getElementById('firstname').value
-    let lastName = document.getElementById('lastname').value
-    let street = document.getElementById('street').value
-    let city = document.getElementById('city').value
-    let state = document.getElementById('state').value
-    let country = document.getElementById('country').value
-    let email = document.getElementById('email').value
-    let date = new Date().toLocaleString()
-    var root = firebase.database().ref();
-    var e = document.getElementById("priority");
-    var priority = e.value;
-    var address = ""
-    if (street != "" && city != "" && state != "" && country != "") {
-         address = street + ", " + city + " " + state + ", " + country;
-    }
-    else {
-        address = "N/A"
-    }
-
-    if (priority == "Select Priority") {
-        priority = "N/A"
-    }
-    if (firstName != "" && lastName != "" && email != "") {
-        var user = {
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            email: email,
-            priority: priority,
-            shipping: "none",
-            date: date,
-        };
 
 
-        firebase.database().ref(this.name + "Employees").push(user);
-        var em = {
-            company: name,
-        };
-        var ret = email.replace('.', '');
-        console.log(ret);
-        firebase.database().ref("Employees").child(ret).set(em);
-        location.reload()
-    } else {
-        window.alert("Please fill out the required data.")
-    }
-
-}
-
+//Saves users edits
 function saveEdits() {
     // #employees-table
     var id = table.getData();
@@ -241,32 +165,7 @@ function saveEdits() {
         console.log("saved")
 }
 
-//Open the popup form
-function openForm() {
-    document.getElementById("wrapper").style.filter = "blur(3px)";
-    document.getElementById("popupForm").style.display = "block";
-}
-
-function closeForm() {
-    document.getElementById("wrapper").style.filter = "unset";
-    document.getElementById("popupForm").style.display = "none";
-}
-
-//Functions to download the data from the table
-document.getElementById("download-csv").addEventListener("click", function () {
-    table.download("csv", "data.csv");
-});
-
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-//trigger download of data.xlsx file
-document.getElementById("download-xlsx").addEventListener("click", function () {
-    table.download("xlsx", "data.xlsx", {
-        sheetName:  compName + " -- " + date
-    });
-});
-
-//Delete the selected rows and set the text of the button
+//removes selected cells
 document.getElementById("delete-row").addEventListener("click", function () {
 
     var id = table.getSelectedData();
@@ -277,4 +176,18 @@ document.getElementById("delete-row").addEventListener("click", function () {
         counter++;
     });
 
+});
+//creates spread sheet
+document.getElementById("download-csv").addEventListener("click", function () {
+    table.download("csv", "data.csv");
+});
+
+//gets date and time
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+//trigger download of data.xlsx file
+document.getElementById("download-xlsx").addEventListener("click", function () {
+    table.download("xlsx", "data.xlsx", {
+        sheetName:  compName + " -- " + date
+    });
 });

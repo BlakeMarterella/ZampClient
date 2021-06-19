@@ -28,7 +28,60 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 function add(){
-    
+
+  let companyOfficalName = document.getElementById('name').value 
+  let companyTitle = document.getElementById('alias').value 
+  let adminFirstName = document.getElementById('firstName').value 
+  let adminLastName = document.getElementById('lastName').value 
+  let adminEmail = document.getElementById('email').value
+  let tempPass = document.getElementById('password').value
+  let image = document.getElementById('image').value 
+  var ret = adminEmail.replace('.', '');
+  //https://upload.wikimedia.org/wikipedia/commons/3/34/Anser_anser_1_%28Piotr_Kuczynski%29.jpg
+
+firebase.auth().createUserWithEmailAndPassword(adminEmail, tempPass).then((userCredential) => {
+        // Signed in           
+            var userA = {
+              firstName: adminFirstName,
+              lastName: adminLastName,
+              email: ret
+            };
+            console.log(ret);
+          
+        firebase.database().ref(companyOfficalName + "Admin").push(userA).then((snapshot) => {   
+          var em = {
+            company: companyOfficalName,
+            name: adminFirstName
+          };
+        
+          firebase.database().ref("ids").child(ret).set(em).then((snapshot) => {
+            let comp = {
+              image: image,
+              name: companyOfficalName
+            }
+            firebase.database().ref("Companies").push(comp).then((snapshot) => {
+              let profile = {
+                alias: companyTitle,
+                name: companyOfficalName,
+                templateText: ""
+              }
+            
+              firebase.database().ref(companyOfficalName).child("randomID0").set(profile).then((snapshot) => {
+                    window.alert("Company created.")
+                    window.location.href = "clients.html";
+                  });    
+            });              
+          });
+        });
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage)
+        return
+    });
+
+
 }
 
 
