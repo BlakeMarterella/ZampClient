@@ -48,20 +48,17 @@ var table = new Tabulator("#swag-table", {
     {
       title: "ID",
       field: "id",
-      width: 116,
       editor: "none"
     },
     {
       title: "Product Name",
       field: "name",
-      width: 200,
       editor: "none"
 
     },
     {
       title: "Price",
       field: "price",
-      width: 67,
       editor: "none"
     },
   ],
