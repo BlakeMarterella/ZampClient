@@ -53,9 +53,10 @@ function loadProfile(items) {
 var welcome = document.getElementById('welcome-msg');
 welcome.innerHTML = "Welcome";  
 var curTime = new Date().getHours();
+console.log(curTime)
 if (curTime > 0 && curTime < 12) {
    welcome.innerHTML = "Good Morning";  
-} else if (curTime < 16) {
+} else if (curTime >= 12 && curTime < 16) {
   welcome.innerHTML = "Good Afternoon";  
 } else {
   welcome.innerHTML = "Good Evening";  
