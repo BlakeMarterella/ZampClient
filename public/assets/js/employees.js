@@ -40,6 +40,16 @@ var table = new Tabulator("#employees-table", {
             }
         },
         {
+            formatter: "rowSelection",
+            titleFormatter: "rowSelection",
+            width: 20,
+            hozAlign: "center",
+            headerSort: false,
+            cellClick: function (e, cell) {
+                cell.getRow().toggleSelect();
+            }
+        },
+        {
             title: "First Name",
             field: "firstname",
             editor: "input"
@@ -52,24 +62,13 @@ var table = new Tabulator("#employees-table", {
             
         },
         {
-            title: "Priority",
-            field: "priority",
-            editor: "select",
-            width: 100,
-
-            editorParams: {
-                values: ["low", "medium", "high"]
-            }
-        },
-        {
             title: "Email",
             field: "email",
-            editor: "input"
-        },
-        {
-            title: "Address",
-            field: "address",
-            editor: "input"
+            formatter:"link", formatterParams:{
+                labelField:"email",
+                urlPrefix:"mailto://",
+                target:"_blank",
+            }
         },
         {
             title: "Date Entered",
