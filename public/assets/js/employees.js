@@ -12,6 +12,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
   });
 
+//custom formatter definition
+var printIcon = function(cell, formatterParams, onRendered){ //plain text value
+    return "<i class='fa fa-pencil'></i>";
+};
+
 var table = new Tabulator("#employees-table", {
     layout: "fitColumns", //fit columns to width of table
     responsiveLayout: "hide", //hide columns that dont fit on the table
@@ -40,13 +45,13 @@ var table = new Tabulator("#employees-table", {
             }
         },
         {
-            formatter: "rowSelection",
-            titleFormatter: "rowSelection",
-            width: 20,
-            hozAlign: "center",
+            formatter:printIcon, 
+            width:40, 
+            hozAlign:"center", 
             headerSort: false,
-            cellClick: function (e, cell) {
-                cell.getRow().toggleSelect();
+            cellClick:function(e, cell)
+            {
+                alert("Printing row data for: " + cell.getRow().getData().name)
             }
         },
         {
@@ -79,12 +84,6 @@ var table = new Tabulator("#employees-table", {
             title: "Shipping Number",
             field: "shipping",
             editor: "input"
-        },
-        {
-            title: "ID",
-            field: "ID",
-            width: 200,
-            editor: "none"
         },
     ],
     rowSelectionChanged: function (data, rows) {
