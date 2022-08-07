@@ -11,6 +11,7 @@ function addEmployee() {
     let date = new Date().toLocaleString()
     var root = firebase.database().ref();
     var e = document.getElementById("priority");
+    var size = document.getElementById("size");
     var priority = e.value;
     var address = ""
     if (street != "" && city != "" && state != "" && country != "") {
@@ -31,6 +32,7 @@ function addEmployee() {
             email: email,
             priority: priority,
             shipping: "none",
+            size: size,
             date: date,
         };
 
