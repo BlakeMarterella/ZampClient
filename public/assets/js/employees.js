@@ -44,7 +44,7 @@ var table = new Tabulator("#employees-table", {
                 cell.getRow().toggleSelect();
             }
         },
-        {
+   /*      {
             formatter:printIcon, 
             width:40, 
             hozAlign:"center", 
@@ -53,7 +53,7 @@ var table = new Tabulator("#employees-table", {
             {
                 alert("Printing row data for: " + cell.getRow().getData().name)
             }
-        },
+        }, */
         {
             title: "First Name",
             field: "firstname",
@@ -83,6 +83,11 @@ var table = new Tabulator("#employees-table", {
         {
             title: "Shipping Number",
             field: "shipping",
+            editor: "input"
+        },
+        {
+            title: "size",
+            field: "size",
             editor: "input"
         },
     ],
@@ -137,7 +142,8 @@ databaseRef.once('value', function (snapshot) {
             address: childData.address,
             date: childData.date,
             shipping: childData.shipping,
-            recieved: recieved
+            recieved: recieved,
+            size: childData.size
         });
         counter++;
     })
@@ -162,6 +168,9 @@ function saveEdits() {
             if (id[n].email == "") {
                 id[n].email = "N/A"
             }
+            if (id[n].size == "") {
+                id[n].size = "N/A"
+            }
             var employee = {
 
                 firstName: id[n].firstname,
@@ -170,6 +179,7 @@ function saveEdits() {
                 priority: id[n].priority,
                 shipping: id[n].shipping,
                 address: id[n].address,
+                size: id[n].size,
                 date: id[n].date
             };
             
